@@ -2916,3 +2916,458 @@ select:focus-visible {
   }
 
 }
+
+/* ========================================
+   PLANNER — TASK DELETE CONTROLS
+======================================== */
+
+
+/* ========================================
+   HEADING ACTIONS
+   Category + delete control
+======================================== */
+
+.planner-view
+.planner-task-heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-shrink: 0;
+
+  gap: 6px;
+}
+
+
+/* ========================================
+   DELETE ICON BUTTON
+======================================== */
+
+.planner-view
+.planner-task-delete-button {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 31px;
+  height: 31px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(154, 73, 73, 0.09);
+
+  border-radius: 8px;
+
+  background:
+    #fffafa;
+
+  color:
+    #9a5555;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.planner-view
+.planner-task-delete-button svg {
+  display: block;
+
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ========================================
+   DELETE BUTTON HOVER
+======================================== */
+
+.planner-view
+.planner-task-delete-button:hover:not(:disabled) {
+  border-color:
+    rgba(154, 73, 73, 0.19);
+
+  background:
+    #fceded;
+
+  color:
+    #934848;
+
+  box-shadow:
+    0 5px 14px
+    rgba(154, 73, 73, 0.08);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   DELETE BUTTON DISABLED
+======================================== */
+
+.planner-view
+.planner-task-delete-button:disabled {
+  opacity: 0.48;
+
+  cursor: not-allowed;
+}
+
+
+/* ========================================
+   INLINE DELETE CONFIRMATION
+======================================== */
+
+.planner-view
+.planner-task-delete-confirmation {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 5px;
+
+  padding: 3px;
+
+  border:
+    1px solid
+    rgba(154, 73, 73, 0.1);
+
+  border-radius: 9px;
+
+  background:
+    #fff8f8;
+
+  animation:
+    plannerDeleteConfirmationEnter
+    160ms ease;
+}
+
+
+@keyframes plannerDeleteConfirmationEnter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+
+}
+
+
+/* ========================================
+   CANCEL DELETE BUTTON
+======================================== */
+
+.planner-view
+.planner-task-delete-cancel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 29px;
+
+  padding:
+    0
+    9px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background:
+    transparent;
+
+  color:
+    var(--planner-text-secondary);
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 680;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+
+.planner-view
+.planner-task-delete-cancel-button:hover:not(:disabled) {
+  background:
+    rgba(22, 50, 79, 0.055);
+
+  color:
+    var(--planner-text);
+}
+
+
+/* ========================================
+   CONFIRM DELETE BUTTON
+======================================== */
+
+.planner-view
+.planner-task-delete-confirm-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 29px;
+
+  padding:
+    0
+    10px;
+
+  border:
+    1px solid
+    rgba(151, 67, 67, 0.08);
+
+  border-radius: 7px;
+
+  background:
+    #a55151;
+
+  color:
+    #ffffff;
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 11px
+    rgba(165, 81, 81, 0.13);
+
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.planner-view
+.planner-task-delete-confirm-button:hover:not(:disabled) {
+  background:
+    #934747;
+
+  box-shadow:
+    0 6px 15px
+    rgba(165, 81, 81, 0.18);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   DELETE CONFIRMATION DISABLED
+======================================== */
+
+.planner-view
+.planner-task-delete-cancel-button:disabled,
+
+.planner-view
+.planner-task-delete-confirm-button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+  .planner-view
+  .planner-task-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+
+  .planner-view
+  .planner-task-heading-actions {
+    width: 100%;
+
+    justify-content:
+      space-between;
+  }
+
+
+  .planner-view
+  .planner-task-delete-button {
+    width: 33px;
+    height: 33px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 620px) {
+
+  .planner-view
+  .planner-task-heading-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    gap: 7px;
+  }
+
+
+  .planner-view
+  .planner-task-delete-button {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+  }
+
+
+  .planner-view
+  .planner-task-delete-button svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .planner-view
+  .planner-task-delete-confirmation {
+    flex: 1;
+
+    justify-content: flex-end;
+
+    padding: 3px;
+
+    border-radius: 9px;
+  }
+
+
+  .planner-view
+  .planner-task-delete-cancel-button,
+
+  .planner-view
+  .planner-task-delete-confirm-button {
+    min-height: 31px;
+
+    padding:
+      0
+      10px;
+
+    font-size: 9px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .planner-view
+  .planner-task-heading-actions {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .planner-view
+  .planner-task-delete-confirmation {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+
+
+  .planner-view
+  .planner-task-delete-cancel-button,
+
+  .planner-view
+  .planner-task-delete-confirm-button {
+    flex: 1;
+  }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+@media (hover: none) {
+
+  .planner-view
+  .planner-task-delete-button:hover,
+
+  .planner-view
+  .planner-task-delete-confirm-button:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .planner-view
+  .planner-task-delete-confirmation {
+    animation: none;
+  }
+
+
+  .planner-view
+  .planner-task-delete-button,
+
+  .planner-view
+  .planner-task-delete-cancel-button,
+
+  .planner-view
+  .planner-task-delete-confirm-button {
+    transition: none;
+  }
+
+}
