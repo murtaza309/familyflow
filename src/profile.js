@@ -1956,10 +1956,20 @@ async function handleProfileLogout() {
     }
 
 
-    await signOut(
-      auth
-    );
+   await signOut(
+  auth
+);
 
+
+/*
+  Reload the application after logout.
+
+  On reload, main.js checks Firebase Auth.
+  Because the user is now signed out,
+  the login screen will be displayed.
+*/
+
+window.location.reload();
 
     /*
       main.js already watches Firebase Auth.
