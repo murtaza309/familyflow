@@ -24395,7 +24395,7 @@ body {
 
 /* =========================================================
    FAMILYFLOW — MOBILE BOTTOM NAV
-   FORCED BLUE + GREEN ACTIVE THEME
+   DARK SIDEBAR BLUE + WHITE ICONS + GREEN ACTIVE STATE
 ========================================================= */
 
 @media (max-width: 760px) {
@@ -24426,6 +24426,8 @@ body {
     width: 100% !important;
     max-width: 100vw !important;
 
+    min-height: 70px !important;
+
     margin: 0 !important;
 
     padding:
@@ -24438,36 +24440,29 @@ body {
 
     border-top:
       1px solid
-      rgba(22, 50, 79, 0.1) !important;
+      rgba(255, 255, 255, 0.08) !important;
 
-    border-radius: 0 !important;
+    border-radius:
+      0 !important;
 
     background:
-      rgba(
-        242,
-        247,
-        250,
-        0.97
-      ) !important;
+      #16324F !important;
 
     box-shadow:
-      0 -10px 30px
-      rgba(
-        22,
-        50,
-        79,
-        0.08
-      ) !important;
+      0 -10px 32px
+      rgba(16, 42, 67, 0.18) !important;
 
     backdrop-filter:
-      blur(18px) !important;
+      none !important;
 
     -webkit-backdrop-filter:
-      blur(18px) !important;
+      none !important;
 
-    transform: none !important;
+    transform:
+      none !important;
 
-    overflow: hidden !important;
+    overflow:
+      hidden !important;
   }
 
 
@@ -24505,7 +24500,12 @@ body {
       transparent !important;
 
     color:
-      #6b8090 !important;
+      rgba(
+        255,
+        255,
+        255,
+        0.84
+      ) !important;
 
     font-family:
       inherit !important;
@@ -24516,14 +24516,11 @@ body {
     cursor:
       pointer !important;
 
-    overflow:
-      hidden !important;
-
     box-shadow:
       none !important;
 
-    transform:
-      none !important;
+    overflow:
+      hidden !important;
 
     transition:
       background 160ms ease,
@@ -24535,7 +24532,7 @@ body {
 
 
   /* ========================================
-     ACTIVE NAV ITEM — GREEN
+     ACTIVE ITEM — SAME GREEN STYLE
   ======================================== */
 
   .mobile-nav-item.is-active {
@@ -24544,7 +24541,7 @@ body {
         79,
         138,
         115,
-        0.12
+        0.16
       ) !important;
 
     background:
@@ -24558,18 +24555,18 @@ body {
       #39705c !important;
 
     box-shadow:
-      0 5px 14px
+      0 5px 16px
       rgba(
-        79,
-        138,
-        115,
-        0.1
+        0,
+        0,
+        0,
+        0.14
       ) !important;
   }
 
 
   /* ========================================
-     NAV ICON
+     ICON CONTAINER
   ======================================== */
 
   .mobile-nav-icon {
@@ -24589,9 +24586,18 @@ body {
       25px !important;
 
     color:
-      inherit !important;
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      ) !important;
   }
 
+
+  /* ========================================
+     DEFAULT SVG ICON
+  ======================================== */
 
   .mobile-nav-icon svg {
     display:
@@ -24612,7 +24618,7 @@ body {
 
 
   /* ========================================
-     ACTIVE ICON
+     ACTIVE ICON — GREEN
   ======================================== */
 
   .mobile-nav-item.is-active
@@ -24646,11 +24652,13 @@ body {
     min-width:
       0 !important;
 
-    overflow:
-      hidden !important;
-
     color:
-      inherit !important;
+      rgba(
+        255,
+        255,
+        255,
+        0.82
+      ) !important;
 
     font-size:
       8px !important;
@@ -24669,11 +24677,14 @@ body {
 
     white-space:
       nowrap !important;
+
+    overflow:
+      hidden !important;
   }
 
 
   /* ========================================
-     ACTIVE LABEL
+     ACTIVE LABEL — GREEN
   ======================================== */
 
   .mobile-nav-item.is-active
