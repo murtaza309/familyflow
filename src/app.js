@@ -1,6 +1,7 @@
 import './dashboard.css';
 import familyFlowLogo from './assets/familyflow-logo.png';
 
+
 import {
   createChildrenView,
   initialiseChildrenView,
@@ -32,6 +33,11 @@ import {
   initialiseProfilePanel,
   openProfilePanel
 } from './profile.js';
+
+import {
+  createNotificationPanel,
+  initialiseNotificationCentre
+} from './notifications.js';
 
 
 /* =========================================
@@ -1744,9 +1750,14 @@ ${createTomorrowView()}
 ${createGlobalTaskModal()}
 
 
+
 <!-- PARENT PROFILE PANEL -->
 
 ${createProfilePanel()}
+
+<!-- NOTIFICATION CENTRE -->
+
+      ${createNotificationPanel()}
 
 </div>
   `;
@@ -4525,6 +4536,73 @@ initialiseTomorrowView({
     preparation view opens that exact
     child's detailed profile.
   */
+
+  onOpenChild: (
+    childId
+  ) => {
+
+    changeAppView(
+      'children'
+    );
+
+
+    openChildProfileById(
+      childId
+    );
+
+  }
+
+});
+
+
+/* =========================================
+   INITIALISE NOTIFICATION CENTRE
+========================================= */
+
+initialiseNotificationCentre({
+
+  /* -----------------------------------------
+     OPEN TODAY
+  ----------------------------------------- */
+
+  onOpenToday: () => {
+
+    changeAppView(
+      'today'
+    );
+
+  },
+
+
+  /* -----------------------------------------
+     OPEN TOMORROW
+  ----------------------------------------- */
+
+  onOpenTomorrow: () => {
+
+    changeAppView(
+      'tomorrow'
+    );
+
+  },
+
+
+  /* -----------------------------------------
+     OPEN PLANNER
+  ----------------------------------------- */
+
+  onOpenPlanner: () => {
+
+    changeAppView(
+      'planner'
+    );
+
+  },
+
+
+  /* -----------------------------------------
+     OPEN CHILD PROFILE
+  ----------------------------------------- */
 
   onOpenChild: (
     childId

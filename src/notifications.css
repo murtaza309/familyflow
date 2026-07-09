@@ -1,0 +1,1851 @@
+/* =========================================================
+   FAMILYFLOW — NOTIFICATION CENTRE
+   Complete dedicated stylesheet
+
+   Goals:
+   - Premium FamilyFlow visual language
+   - Desktop slide-over panel
+   - Excellent mobile experience
+   - Strong unread hierarchy
+   - Browser permission card
+   - No horizontal overflow
+========================================================= */
+
+
+/* ========================================
+   DESIGN TOKENS
+======================================== */
+
+.notification-panel-backdrop {
+
+  --notification-navy:
+    #16324f;
+
+  --notification-navy-deep:
+    #102a43;
+
+  --notification-green:
+    #4f8a73;
+
+  --notification-green-dark:
+    #39705c;
+
+  --notification-green-soft:
+    #e9f4ef;
+
+  --notification-green-pale:
+    #f4f9f7;
+
+  --notification-red:
+    #a65454;
+
+  --notification-red-soft:
+    #fbeeee;
+
+  --notification-blue:
+    #4f7d96;
+
+  --notification-blue-soft:
+    #eaf4f9;
+
+  --notification-purple:
+    #716ca1;
+
+  --notification-purple-soft:
+    #f0eff9;
+
+  --notification-gold:
+    #9b713e;
+
+  --notification-gold-soft:
+    #f8f0e5;
+
+  --notification-text:
+    #172c3c;
+
+  --notification-text-secondary:
+    #526875;
+
+  --notification-text-muted:
+    #71838d;
+
+  --notification-border:
+    rgba(22, 50, 79, 0.08);
+
+  --notification-border-medium:
+    rgba(22, 50, 79, 0.13);
+
+}
+
+
+/* ========================================
+   BODY LOCK
+======================================== */
+
+body.notification-panel-open {
+  overflow: hidden;
+}
+
+
+/* ========================================
+   BACKDROP
+======================================== */
+
+.notification-panel-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 12000;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    rgba(8, 25, 39, 0);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  overflow: hidden;
+
+  transition:
+    background 220ms ease,
+    opacity 220ms ease,
+    visibility 220ms ease;
+}
+
+
+.notification-panel-backdrop[hidden] {
+  display: none !important;
+}
+
+
+.notification-panel-backdrop.is-visible {
+  background:
+    rgba(8, 25, 39, 0.35);
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+
+/* ========================================
+   COMPLETE PANEL
+======================================== */
+
+.notification-panel {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: min(
+    460px,
+    calc(100vw - 32px)
+  );
+
+  max-width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  border-left:
+    1px solid
+    rgba(255, 255, 255, 0.5);
+
+  background:
+    #f8faf9;
+
+  box-shadow:
+    -18px 0 55px
+    rgba(8, 25, 39, 0.18);
+
+  overflow: hidden;
+
+  transform:
+    translateX(100%);
+
+  transition:
+    transform 260ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.notification-panel-backdrop.is-visible
+.notification-panel {
+  transform:
+    translateX(0);
+}
+
+
+/* ========================================
+   PANEL HEADER
+======================================== */
+
+.notification-panel-header {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex-shrink: 0;
+
+  padding:
+    25px
+    24px
+    21px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  background:
+    linear-gradient(
+      145deg,
+      #183f5c 0%,
+      #143952 55%,
+      #102f48 100%
+    );
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   HEADER DECORATION
+======================================== */
+
+.notification-panel-header::before {
+  content: '';
+
+  position: absolute;
+
+  top: -90px;
+  right: -75px;
+
+  width: 230px;
+  height: 230px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.notification-panel-header::after {
+  content: '';
+
+  position: absolute;
+
+  top: -35px;
+  right: -5px;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   HEADER COPY
+======================================== */
+
+.notification-panel-header > div {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   HEADER EYEBROW
+======================================== */
+
+.notification-panel-eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    #9bd3bf;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.13em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   HEADER TITLE
+======================================== */
+
+.notification-panel-header h2 {
+  margin: 0;
+
+  color:
+    #ffffff;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 27px;
+  font-weight: 780;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height: 1.15;
+}
+
+
+/* ========================================
+   HEADER DESCRIPTION
+======================================== */
+
+.notification-panel-header p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    #c8d8df;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.notification-panel-close {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  cursor: pointer;
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.notification-panel-close:hover {
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  color:
+    #ffffff;
+
+  transform:
+    rotate(3deg);
+}
+
+
+.notification-panel-close svg {
+  width: 17px;
+  height: 17px;
+}
+
+
+/* ========================================
+   PERMISSION CONTAINER
+======================================== */
+
+.notification-permission-container {
+  flex-shrink: 0;
+
+  padding:
+    14px
+    14px
+    0;
+}
+
+
+/* ========================================
+   PERMISSION CARD
+======================================== */
+
+.notification-permission-card {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding:
+    12px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.11);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f4f9f7
+    );
+
+  box-shadow:
+    0 6px 18px
+    rgba(18, 43, 59, 0.035);
+}
+
+
+/* ========================================
+   ENABLED PERMISSION CARD
+======================================== */
+
+.notification-permission-card.is-enabled {
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  background:
+    linear-gradient(
+      145deg,
+      #f5faf8,
+      #ebf5f0
+    );
+}
+
+
+/* ========================================
+   BLOCKED PERMISSION CARD
+======================================== */
+
+.notification-permission-card.is-blocked {
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  border-color:
+    rgba(166, 84, 84, 0.1);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffafa,
+      #fbeeee
+    );
+}
+
+
+/* ========================================
+   UNSUPPORTED CARD
+======================================== */
+
+.notification-permission-card.is-unsupported {
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+}
+
+
+/* ========================================
+   PERMISSION ICON
+======================================== */
+
+.notification-permission-icon {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background:
+    var(--notification-green-soft);
+
+  color:
+    var(--notification-green-dark);
+}
+
+
+.notification-permission-card.is-blocked
+.notification-permission-icon {
+  background:
+    var(--notification-red-soft);
+
+  color:
+    var(--notification-red);
+}
+
+
+.notification-permission-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ========================================
+   PERMISSION COPY
+======================================== */
+
+.notification-permission-copy,
+.notification-permission-card > div:not(
+  .notification-permission-icon
+) {
+  min-width: 0;
+}
+
+
+/* ========================================
+   PERMISSION TITLE
+======================================== */
+
+.notification-permission-card strong {
+  display: block;
+
+  color:
+    var(--notification-text);
+
+  font-size: 11px;
+  font-weight: 730;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   PERMISSION DESCRIPTION
+======================================== */
+
+.notification-permission-card
+div
+> span {
+  display: block;
+
+  margin-top: 3px;
+
+  color:
+    var(--notification-text-secondary);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   ENABLE NOTIFICATIONS BUTTON
+======================================== */
+
+.notification-enable-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 37px;
+
+  padding:
+    0
+    11px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.14);
+
+  border-radius: 10px;
+
+  background:
+    var(--notification-green-dark);
+
+  color:
+    #ffffff;
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 720;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px
+    rgba(57, 112, 92, 0.14);
+
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.notification-enable-button:hover:not(:disabled) {
+  background:
+    #326650;
+
+  box-shadow:
+    0 8px 18px
+    rgba(57, 112, 92, 0.19);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.notification-enable-button:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+}
+
+
+/* ========================================
+   LIST TOOLBAR
+======================================== */
+
+.notification-list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  flex-shrink: 0;
+
+  padding:
+    17px
+    17px
+    10px;
+}
+
+
+/* ========================================
+   TOOLBAR LABEL
+======================================== */
+
+.notification-list-toolbar > span {
+  color:
+    var(--notification-text);
+
+  font-size: 11px;
+  font-weight: 750;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   MARK ALL READ
+======================================== */
+
+#markAllNotificationsReadButton {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    var(--notification-green-dark);
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  transition:
+    color 150ms ease;
+}
+
+
+#markAllNotificationsReadButton:hover {
+  color:
+    #285a47;
+}
+
+
+/* ========================================
+   NOTIFICATION LIST
+======================================== */
+
+.notification-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  padding:
+    0
+    14px
+    24px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior:
+    contain;
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    rgba(22, 50, 79, 0.16)
+    transparent;
+}
+
+
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.notification-list::-webkit-scrollbar-track {
+  background:
+    transparent;
+}
+
+
+.notification-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background:
+    rgba(22, 50, 79, 0.14);
+}
+
+
+/* ========================================
+   NOTIFICATION CARD
+======================================== */
+
+.notification-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding:
+    13px;
+
+  border:
+    1px solid
+    var(--notification-border);
+
+  border-radius: 14px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 5px 17px
+    rgba(18, 43, 59, 0.032);
+
+  overflow: hidden;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease,
+    opacity 150ms ease;
+}
+
+
+.notification-card:hover {
+  border-color:
+    var(--notification-border-medium);
+
+  box-shadow:
+    0 10px 24px
+    rgba(18, 43, 59, 0.06);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   UNREAD CARD
+======================================== */
+
+.notification-card.is-unread {
+  border-color:
+    rgba(79, 138, 115, 0.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fbfdfc 70%,
+      #f4f9f7 100%
+    );
+}
+
+
+/* ========================================
+   READ CARD
+======================================== */
+
+.notification-card.is-read {
+  opacity: 0.76;
+}
+
+
+/* ========================================
+   UNREAD ACCENT
+======================================== */
+
+.notification-card.is-unread::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 3px;
+
+  background:
+    var(--notification-green);
+}
+
+
+/* ========================================
+   CARD ICON
+======================================== */
+
+.notification-card-icon {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+}
+
+
+.notification-card-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ========================================
+   OVERDUE ICON
+======================================== */
+
+.notification-card-icon-overdue {
+  background:
+    var(--notification-red-soft);
+
+  color:
+    var(--notification-red);
+}
+
+
+/* ========================================
+   TODAY ICON
+======================================== */
+
+.notification-card-icon-today {
+  background:
+    var(--notification-green-soft);
+
+  color:
+    var(--notification-green-dark);
+}
+
+
+/* ========================================
+   TOMORROW ICON
+======================================== */
+
+.notification-card-icon-tomorrow {
+  background:
+    var(--notification-blue-soft);
+
+  color:
+    var(--notification-blue);
+}
+
+
+/* ========================================
+   APPOINTMENT ICON
+======================================== */
+
+.notification-card-icon-appointment {
+  background:
+    var(--notification-purple-soft);
+
+  color:
+    var(--notification-purple);
+}
+
+
+/* ========================================
+   CARD MAIN
+======================================== */
+
+.notification-card-main {
+  min-width: 0;
+}
+
+
+/* ========================================
+   CARD TOP
+======================================== */
+
+.notification-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 9px;
+
+  min-width: 0;
+
+  margin-bottom: 5px;
+}
+
+
+/* ========================================
+   TYPE LABEL
+======================================== */
+
+.notification-type-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 22px;
+
+  padding:
+    0
+    7px;
+
+  border-radius: 7px;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.07em;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   TYPE LABEL COLOURS
+======================================== */
+
+.notification-type-label-overdue {
+  background:
+    var(--notification-red-soft);
+
+  color:
+    var(--notification-red);
+}
+
+
+.notification-type-label-today {
+  background:
+    var(--notification-green-soft);
+
+  color:
+    var(--notification-green-dark);
+}
+
+
+.notification-type-label-tomorrow {
+  background:
+    var(--notification-blue-soft);
+
+  color:
+    var(--notification-blue);
+}
+
+
+.notification-type-label-appointment {
+  background:
+    var(--notification-purple-soft);
+
+  color:
+    var(--notification-purple);
+}
+
+
+/* ========================================
+   UNREAD DOT
+======================================== */
+
+.notification-unread-dot {
+  display: block;
+
+  flex-shrink: 0;
+
+  width: 8px;
+  height: 8px;
+
+  border:
+    2px solid
+    rgba(255, 255, 255, 0.92);
+
+  border-radius: 50%;
+
+  background:
+    var(--notification-green);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(79, 138, 115, 0.12);
+}
+
+
+/* ========================================
+   CARD TITLE
+======================================== */
+
+.notification-card h3 {
+  margin: 0;
+
+  color:
+    var(--notification-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 740;
+
+  letter-spacing:
+    -0.025em;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   CARD DESCRIPTION
+======================================== */
+
+.notification-card p {
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--notification-text-secondary);
+
+  font-size: 10px;
+
+  line-height: 1.55;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/* ========================================
+   VIEW DETAILS ACTION
+======================================== */
+
+.notification-open-action {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 9px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    var(--notification-green-dark);
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 720;
+
+  cursor: pointer;
+}
+
+
+.notification-open-action svg {
+  width: 12px;
+  height: 12px;
+
+  transition:
+    transform 150ms ease;
+}
+
+
+.notification-open-action:hover svg {
+  transform:
+    translateX(2px);
+}
+
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.notification-empty-state {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 330px;
+
+  margin:
+    16px
+    14px
+    24px;
+
+  padding:
+    35px
+    24px;
+
+  border:
+    1px dashed
+    rgba(22, 50, 79, 0.11);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f4f9f7
+    );
+
+  text-align: center;
+}
+
+
+/* ========================================
+   EMPTY ICON
+======================================== */
+
+.notification-empty-icon {
+  display: grid;
+  place-items: center;
+
+  width: 60px;
+  height: 60px;
+
+  margin-bottom: 15px;
+
+  border-radius: 17px;
+
+  background:
+    var(--notification-green-soft);
+
+  color:
+    var(--notification-green-dark);
+}
+
+
+.notification-empty-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* ========================================
+   EMPTY EYEBROW
+======================================== */
+
+.notification-empty-state > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    var(--notification-green-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   EMPTY TITLE
+======================================== */
+
+.notification-empty-state h3 {
+  margin: 0;
+
+  color:
+    var(--notification-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 750;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   EMPTY DESCRIPTION
+======================================== */
+
+.notification-empty-state p {
+  max-width: 330px;
+
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--notification-text-secondary);
+
+  font-size: 10px;
+
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   BELL BUTTON POSITIONING
+======================================== */
+
+#notificationButton {
+  position: relative;
+}
+
+
+/* ========================================
+   NOTIFICATION BADGE
+======================================== */
+
+.notification-bell-badge {
+  position: absolute;
+
+  top: -4px;
+  right: -5px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 18px;
+
+  padding:
+    0
+    4px;
+
+  border:
+    2px solid
+    #ffffff;
+
+  border-radius: 999px;
+
+  background:
+    #d95959;
+
+  color:
+    #ffffff;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  box-shadow:
+    0 3px 9px
+    rgba(217, 89, 89, 0.24);
+
+  pointer-events: none;
+
+  animation:
+    notificationBadgeEnter
+    220ms ease;
+}
+
+
+@keyframes notificationBadgeEnter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+
+}
+
+
+/* ========================================
+   BELL ACTIVE STATE
+======================================== */
+
+#notificationButton.has-notifications {
+  color:
+    var(--notification-green-dark);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+  .notification-panel {
+    width:
+      min(
+        430px,
+        calc(100vw - 18px)
+      );
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 620px) {
+
+  .notification-panel-backdrop {
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+
+  /* ========================================
+     MOBILE BOTTOM SHEET
+  ======================================== */
+
+  .notification-panel {
+    width: 100%;
+    max-width: 100vw;
+
+    height:
+      min(
+        88dvh,
+        760px
+      );
+
+    border:
+      0;
+
+    border-radius:
+      20px
+      20px
+      0
+      0;
+
+    box-shadow:
+      0 -20px 60px
+      rgba(8, 25, 39, 0.22);
+
+    transform:
+      translateY(100%);
+  }
+
+
+  .notification-panel-backdrop.is-visible
+  .notification-panel {
+    transform:
+      translateY(0);
+  }
+
+
+  /* ========================================
+     MOBILE DRAG INDICATOR
+  ======================================== */
+
+  .notification-panel::before {
+    content: '';
+
+    position: absolute;
+
+    top: 8px;
+    left: 50%;
+
+    z-index: 20;
+
+    width: 42px;
+    height: 4px;
+
+    border-radius: 999px;
+
+    background:
+      rgba(255, 255, 255, 0.28);
+
+    transform:
+      translateX(-50%);
+
+    pointer-events: none;
+  }
+
+
+  /* ========================================
+     HEADER
+  ======================================== */
+
+  .notification-panel-header {
+    padding:
+      25px
+      17px
+      17px;
+  }
+
+
+  .notification-panel-eyebrow {
+    font-size: 8px;
+  }
+
+
+  .notification-panel-header h2 {
+    font-size: 23px;
+  }
+
+
+  .notification-panel-header p {
+    font-size: 10px;
+  }
+
+
+  .notification-panel-close {
+    width: 38px;
+    height: 38px;
+  }
+
+
+  /* ========================================
+     PERMISSION
+  ======================================== */
+
+  .notification-permission-container {
+    padding:
+      10px
+      10px
+      0;
+  }
+
+
+  .notification-permission-card {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 9px;
+
+    padding: 10px;
+
+    border-radius: 12px;
+  }
+
+
+  .notification-permission-card:not(
+    .is-enabled
+  ):not(
+    .is-blocked
+  ):not(
+    .is-unsupported
+  )
+  .notification-enable-button {
+    grid-column:
+      1 / -1;
+
+    width: 100%;
+  }
+
+
+  .notification-permission-icon {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
+  }
+
+
+  .notification-permission-card strong {
+    font-size: 10px;
+  }
+
+
+  .notification-permission-card
+  div
+  > span {
+    font-size: 9px;
+  }
+
+
+  .notification-enable-button {
+    min-height: 39px;
+
+    font-size: 9px;
+  }
+
+
+  /* ========================================
+     TOOLBAR
+  ======================================== */
+
+  .notification-list-toolbar {
+    padding:
+      14px
+      13px
+      9px;
+  }
+
+
+  .notification-list-toolbar > span {
+    font-size: 10px;
+  }
+
+
+  #markAllNotificationsReadButton {
+    font-size: 8px;
+  }
+
+
+  /* ========================================
+     LIST
+  ======================================== */
+
+  .notification-list {
+    gap: 7px;
+
+    padding:
+      0
+      10px
+      calc(
+        18px
+        + env(safe-area-inset-bottom)
+      );
+  }
+
+
+  /* ========================================
+     CARD
+  ======================================== */
+
+  .notification-card {
+    gap: 9px;
+
+    padding: 11px;
+
+    border-radius: 12px;
+  }
+
+
+  .notification-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 5px 17px
+      rgba(18, 43, 59, 0.032);
+  }
+
+
+  .notification-card-icon {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
+  }
+
+
+  .notification-card-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  .notification-type-label {
+    min-height: 21px;
+
+    font-size: 7px;
+  }
+
+
+  .notification-card h3 {
+    font-size: 12px;
+  }
+
+
+  .notification-card p {
+    font-size: 9px;
+  }
+
+
+  .notification-open-action {
+    margin-top: 8px;
+
+    font-size: 9px;
+  }
+
+
+  /* ========================================
+     EMPTY STATE
+  ======================================== */
+
+  .notification-empty-state {
+    min-height: 280px;
+
+    margin:
+      12px
+      10px
+      calc(
+        18px
+        + env(safe-area-inset-bottom)
+      );
+
+    padding:
+      30px
+      18px;
+  }
+
+
+  .notification-empty-icon {
+    width: 54px;
+    height: 54px;
+
+    border-radius: 15px;
+  }
+
+
+  .notification-empty-state h3 {
+    font-size: 17px;
+  }
+
+
+  .notification-empty-state p {
+    font-size: 10px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .notification-panel {
+    height:
+      90dvh;
+  }
+
+
+  .notification-panel-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .notification-card {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+  }
+
+
+  .notification-card-icon {
+    width: 37px;
+    height: 37px;
+  }
+
+
+  .notification-panel-header h2 {
+    font-size: 21px;
+  }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+@media (hover: none) {
+
+  .notification-card:hover,
+
+  .notification-panel-close:hover,
+
+  .notification-enable-button:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ========================================
+   ACCESSIBLE FOCUS STATES
+======================================== */
+
+.notification-panel
+button:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 138, 115, 0.28);
+
+  outline-offset:
+    3px;
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .notification-panel-backdrop,
+
+  .notification-panel,
+
+  .notification-card,
+
+  .notification-panel-close,
+
+  .notification-enable-button,
+
+  .notification-open-action svg,
+
+  .notification-bell-badge {
+    transition: none;
+    animation: none;
+  }
+
+}
