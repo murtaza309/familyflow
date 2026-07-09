@@ -2,7 +2,8 @@
 import './planner.css';
 import {
   getTasks,
-  toggleTaskCompletion
+  toggleTaskCompletion,
+  deleteTask
 } from './tasks.js';
 
 import {
@@ -53,6 +54,8 @@ let activePlannerChildFilter =
 
 let pendingPlannerTaskIds =
   new Set();
+  let plannerDeleteConfirmTaskId =
+  null;
 
 
 let plannerTasksUpdatedHandler =
@@ -171,6 +174,23 @@ const icons = {
     >
       <path d="M5 12h14"></path>
       <path d="m14 7 5 5-5 5"></path>
+    </svg>
+  `,
+
+    trash: `
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M3 6h18"></path>
+      <path d="M8 6V4h8v2"></path>
+      <path d="M19 6 18 20H6L5 6"></path>
+      <path d="M10 11v5"></path>
+      <path d="M14 11v5"></path>
     </svg>
   `,
 
@@ -1335,6 +1355,9 @@ function createPlannerTaskCard(
     pendingPlannerTaskIds.has(
       task?.id
     );
+  const isDeleteConfirming =
+    plannerDeleteConfirmTaskId
+    === task?.id
 
 
   return `
@@ -1380,14 +1403,63 @@ function createPlannerTaskCard(
           </h3>
 
 
-          <span
-            class="
-              planner-task-category
-              planner-task-category-${category}
-            "
-          >
-            ${categoryLabel}
-          </span>
+          <div class="planner-task-heading-actions">
+
+            <span
+              class="
+                planner-task-category
+                planner-task-category-${category}
+              "
+            >
+              ${categoryLabel}
+            </span>
+
+
+            ${
+              isDeleteConfirming
+                ? `
+                  <div class="planner-task-delete-confirmation">
+
+                    <button
+                      type="button"
+                      class="planner-task-delete-cancel-button"
+                      data-planner-cancel-delete-task="${id}"
+                      ${isPending ? 'disabled' : ''}
+                    >
+                      Cancel
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="planner-task-delete-confirm-button"
+                      data-planner-confirm-delete-task="${id}"
+                      ${isPending ? 'disabled' : ''}
+                    >
+                      ${
+                        isPending
+                          ? 'Deleting...'
+                          : 'Delete'
+                      }
+                    </button>
+
+                  </div>
+                `
+                : `
+                  <button
+                    type="button"
+                    class="planner-task-delete-button"
+                    data-planner-request-delete-task="${id}"
+                    aria-label="Delete ${title}"
+                    title="Delete task"
+                    ${isPending ? 'disabled' : ''}
+                  >
+                    ${icons.trash}
+                  </button>
+                `
+            }
+
+          </div>
 
         </div>
 
@@ -1883,7 +1955,19 @@ function updatePlannerTasks(
         )
       : [];
 
+if (
+    plannerDeleteConfirmTaskId
+    && !plannerTasks.some(
+      (task) =>
+        task.id
+        === plannerDeleteConfirmTaskId
+    )
+  ) {
 
+    plannerDeleteConfirmTaskId =
+      null;
+
+  }
   refreshPlannerView();
 
 }
@@ -1961,6 +2045,9 @@ function selectPlannerDate(
     also moves the planner into that month.
   */
 
+    plannerDeleteConfirmTaskId =
+    null;
+
   const clickedYear =
     date.getFullYear();
 
@@ -2019,6 +2106,9 @@ function changePlannerMonth(
       plannerMonth,
       1
     );
+  plannerDeleteConfirmTaskId =
+    null;
+    
 
 
   refreshPlannerView();
@@ -2050,6 +2140,9 @@ function goToPlannerToday() {
       today.getMonth(),
       today.getDate()
     );
+
+ plannerDeleteConfirmTaskId =
+    null;
 
 
   refreshPlannerView();
@@ -2152,6 +2245,149 @@ async function handlePlannerTaskToggle(
 
 }
 
+/* =========================================
+   REQUEST TASK DELETION
+========================================= */
+
+function handlePlannerDeleteRequest(
+  taskId
+) {
+
+  if (
+    !taskId
+    || pendingPlannerTaskIds.has(
+      taskId
+    )
+  ) {
+    return;
+  }
+
+
+  const taskExists =
+    plannerTasks.some(
+      (task) =>
+        task.id === taskId
+    );
+
+
+  if (!taskExists) {
+    return;
+  }
+
+
+  plannerDeleteConfirmTaskId =
+    taskId;
+
+
+  refreshPlannerView();
+
+}
+
+
+/* =========================================
+   CANCEL TASK DELETION
+========================================= */
+
+function cancelPlannerDeleteRequest(
+  taskId
+) {
+
+  if (
+    taskId
+    && plannerDeleteConfirmTaskId
+    !== taskId
+  ) {
+    return;
+  }
+
+
+  plannerDeleteConfirmTaskId =
+    null;
+
+
+  refreshPlannerView();
+
+}
+
+
+/* =========================================
+   DELETE PLANNER TASK
+========================================= */
+
+async function handlePlannerDeleteTask(
+  taskId
+) {
+
+  if (
+    !taskId
+    || pendingPlannerTaskIds.has(
+      taskId
+    )
+    || plannerDeleteConfirmTaskId
+      !== taskId
+  ) {
+    return;
+  }
+
+
+  const task =
+    plannerTasks.find(
+      (item) =>
+        item.id === taskId
+    );
+
+
+  if (!task) {
+
+    plannerDeleteConfirmTaskId =
+      null;
+
+
+    refreshPlannerView();
+
+
+    return;
+
+  }
+
+
+  try {
+
+    pendingPlannerTaskIds.add(
+      taskId
+    );
+
+
+    refreshPlannerView();
+
+
+    await deleteTask(
+      taskId
+    );
+
+
+    plannerDeleteConfirmTaskId =
+      null;
+
+  } catch (error) {
+
+    console.error(
+      'Failed to delete task from Planner:',
+      error
+    );
+
+  } finally {
+
+    pendingPlannerTaskIds.delete(
+      taskId
+    );
+
+
+    refreshPlannerView();
+
+  }
+
+}
 
 /* =========================================
    ADD TASK ACTION
@@ -2327,6 +2563,79 @@ function attachDynamicPlannerListeners() {
           handlePlannerTaskToggle(
             button.dataset
               .plannerToggleTask
+          );
+
+        }
+      );
+
+    });
+      /* -----------------------------------------
+     REQUEST TASK DELETE
+  ----------------------------------------- */
+
+  document
+    .querySelectorAll(
+      '[data-planner-request-delete-task]'
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          handlePlannerDeleteRequest(
+            button.dataset
+              .plannerRequestDeleteTask
+          );
+
+        }
+      );
+
+    });
+
+
+  /* -----------------------------------------
+     CONFIRM TASK DELETE
+  ----------------------------------------- */
+
+  document
+    .querySelectorAll(
+      '[data-planner-confirm-delete-task]'
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          handlePlannerDeleteTask(
+            button.dataset
+              .plannerConfirmDeleteTask
+          );
+
+        }
+      );
+
+    });
+
+
+  /* -----------------------------------------
+     CANCEL TASK DELETE
+  ----------------------------------------- */
+
+  document
+    .querySelectorAll(
+      '[data-planner-cancel-delete-task]'
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          cancelPlannerDeleteRequest(
+            button.dataset
+              .plannerCancelDeleteTask
           );
 
         }
