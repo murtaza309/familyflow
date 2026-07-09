@@ -1,0 +1,2724 @@
+/* ========================================
+   FAMILYFLOW — PREPARE FOR TOMORROW
+   Complete dedicated stylesheet
+
+   Goals:
+   - Same font-size system as Dashboard/Today
+   - Calm, premium preparation experience
+   - Readable without becoming bulky
+   - Strong readiness section
+   - Compact child groups and task cards
+   - Excellent mobile responsiveness
+======================================== */
+
+
+/* ========================================
+   DESIGN TOKENS
+======================================== */
+
+.tomorrow-view {
+
+  --tomorrow-navy:
+    #16324f;
+
+  --tomorrow-navy-deep:
+    #102a43;
+
+  --tomorrow-navy-soft:
+    #234860;
+
+  --tomorrow-green:
+    #4f8a73;
+
+  --tomorrow-green-dark:
+    #39705c;
+
+  --tomorrow-green-soft:
+    #e9f4ef;
+
+  --tomorrow-green-pale:
+    #f4f9f7;
+
+  --tomorrow-blue-soft:
+    #eaf4f9;
+
+  --tomorrow-blue:
+    #4f7d96;
+
+  --tomorrow-gold-soft:
+    #f8f0e5;
+
+  --tomorrow-gold:
+    #9b713e;
+
+  --tomorrow-purple-soft:
+    #f0eff9;
+
+  --tomorrow-purple:
+    #716ca1;
+
+  --tomorrow-rose-soft:
+    #f9eaed;
+
+  --tomorrow-rose:
+    #9a606a;
+
+  --tomorrow-text:
+    #172c3c;
+
+  --tomorrow-text-secondary:
+    #526875;
+
+  --tomorrow-text-muted:
+    #71838d;
+
+  --tomorrow-border:
+    rgba(22, 50, 79, 0.08);
+
+  --tomorrow-border-medium:
+    rgba(22, 50, 79, 0.13);
+
+  --tomorrow-surface:
+    #ffffff;
+
+  --tomorrow-surface-soft:
+    #f8faf9;
+
+  --tomorrow-shadow:
+    0 11px 34px
+    rgba(18, 43, 59, 0.045);
+
+  --tomorrow-shadow-hover:
+    0 16px 42px
+    rgba(18, 43, 59, 0.075);
+
+}
+
+
+/* ========================================
+   ROOT
+======================================== */
+
+.tomorrow-view {
+  width: 100%;
+  min-width: 0;
+
+  padding-bottom: 48px;
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.tomorrow-view
+.tomorrow-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  margin-bottom: 22px;
+}
+
+
+.tomorrow-view
+.tomorrow-page-header > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   PAGE EYEBROW
+======================================== */
+
+.tomorrow-view
+.tomorrow-page-eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    var(--tomorrow-green-dark);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.13em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   PAGE TITLE
+======================================== */
+
+.tomorrow-view
+.tomorrow-page-header h1 {
+  margin: 0;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size:
+    clamp(
+      38px,
+      3.8vw,
+      52px
+    );
+
+  font-weight: 780;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1.03;
+}
+
+
+/* ========================================
+   PAGE DESCRIPTION
+======================================== */
+
+.tomorrow-view
+.tomorrow-page-header p {
+  max-width: 720px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(--tomorrow-text-secondary);
+
+  font-size: 14px;
+  font-weight: 450;
+
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   HEADER ADD TASK BUTTON
+======================================== */
+
+.tomorrow-view
+.tomorrow-page-header
+.children-primary-button {
+  flex-shrink: 0;
+
+  min-height: 49px;
+
+  padding:
+    0
+    20px;
+
+  border-radius: 14px;
+
+  font-size: 13px;
+  font-weight: 720;
+
+  box-shadow:
+    0 9px 25px
+    rgba(22, 50, 79, 0.12);
+}
+
+
+/* ========================================
+   CONTROL BAR
+======================================== */
+
+.tomorrow-view
+.tomorrow-control-bar {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  min-width: 0;
+
+  margin-bottom: 14px;
+
+  padding:
+    16px
+    18px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.1);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f9fcfb 58%,
+      #eef6f2 100%
+    );
+
+  box-shadow:
+    0 9px 28px
+    rgba(18, 43, 59, 0.035);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   CONTROL DECORATION
+======================================== */
+
+.tomorrow-view
+.tomorrow-control-bar::after {
+  content: '';
+
+  position: absolute;
+
+  top: -100px;
+  right: -55px;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 138, 115, 0.09),
+      rgba(79, 138, 115, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   DATE DETAILS
+======================================== */
+
+.tomorrow-view
+.tomorrow-date-details {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 13px;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   DATE ICON
+======================================== */
+
+.tomorrow-view
+.tomorrow-date-icon {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 14px;
+
+  background:
+    var(--tomorrow-green-soft);
+
+  color:
+    var(--tomorrow-green-dark);
+}
+
+
+.tomorrow-view
+.tomorrow-date-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* ========================================
+   DATE COPY
+======================================== */
+
+.tomorrow-view
+.tomorrow-date-details > div {
+  min-width: 0;
+}
+
+
+.tomorrow-view
+.tomorrow-date-details span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    var(--tomorrow-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+.tomorrow-view
+.tomorrow-date-details strong {
+  display: block;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   CHILD FILTER CONTAINER
+======================================== */
+
+.tomorrow-view
+#tomorrowChildFilterContainer {
+  position: relative;
+  z-index: 2;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   CHILD FILTER
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-filter {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+/* ========================================
+   FILTER LABEL
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-filter > label,
+.tomorrow-view
+.tomorrow-child-filter > span {
+  color:
+    var(--tomorrow-text-secondary);
+
+  font-size: 11px;
+  font-weight: 650;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   FILTER SELECT
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-filter select {
+  min-width: 180px;
+  min-height: 43px;
+
+  padding:
+    0
+    38px
+    0
+    13px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.1);
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background:
+    #ffffff;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+.tomorrow-view
+.tomorrow-child-filter select:hover {
+  border-color:
+    rgba(79, 138, 115, 0.22);
+}
+
+
+.tomorrow-view
+.tomorrow-child-filter select:focus {
+  border-color:
+    rgba(79, 138, 115, 0.48);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(79, 138, 115, 0.08);
+}
+
+
+/* ========================================
+   SUMMARY GRID
+======================================== */
+
+.tomorrow-view
+.tomorrow-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+}
+
+
+/* ========================================
+   SUMMARY CARD
+======================================== */
+
+.tomorrow-view
+.tomorrow-summary-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 112px;
+
+  padding:
+    16px
+    17px;
+
+  border:
+    1px solid
+    var(--tomorrow-border);
+
+  border-radius: 15px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 7px 22px
+    rgba(18, 43, 59, 0.032);
+
+  overflow: hidden;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.tomorrow-view
+.tomorrow-summary-card:hover {
+  border-color:
+    var(--tomorrow-border-medium);
+
+  box-shadow:
+    var(--tomorrow-shadow-hover);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   SUMMARY DECORATION
+======================================== */
+
+.tomorrow-view
+.tomorrow-summary-card::after {
+  content: '';
+
+  position: absolute;
+
+  right: -40px;
+  bottom: -48px;
+
+  width: 115px;
+  height: 115px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 138, 115, 0.055),
+      rgba(79, 138, 115, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   SUMMARY LABEL
+======================================== */
+
+.tomorrow-view
+.tomorrow-summary-card > span {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  color:
+    var(--tomorrow-text-secondary);
+
+  font-size: 11px;
+  font-weight: 680;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   SUMMARY NUMBER
+======================================== */
+
+.tomorrow-view
+.tomorrow-summary-card > strong {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 9px;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   SUMMARY DESCRIPTION
+======================================== */
+
+.tomorrow-view
+.tomorrow-summary-card > small {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    var(--tomorrow-text-muted);
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   READINESS BANNER
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-banner {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 16px;
+
+  min-width: 0;
+
+  margin-bottom: 14px;
+
+  padding:
+    21px
+    22px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #183f5c 0%,
+      #143952 55%,
+      #102f48 100%
+    );
+
+  color:
+    #ffffff;
+
+  box-shadow:
+    0 15px 38px
+    rgba(15, 48, 72, 0.16);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   READINESS DECORATION
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-banner::before {
+  content: '';
+
+  position: absolute;
+
+  top: -90px;
+  right: -60px;
+
+  width: 240px;
+  height: 240px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.tomorrow-view
+.tomorrow-readiness-banner::after {
+  content: '';
+
+  position: absolute;
+
+  top: -35px;
+  right: -5px;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   READINESS ICON
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-icon {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 56px;
+  height: 56px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.11);
+
+  border-radius: 16px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  color:
+    #a5dbc8;
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+.tomorrow-view
+.tomorrow-readiness-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* ========================================
+   READINESS CONTENT
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   READINESS EYEBROW
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-content > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    #9bd3bf;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   READINESS TITLE
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-content h2 {
+  margin: 0;
+
+  color:
+    #ffffff;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 22px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   READINESS DESCRIPTION
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-content > p {
+  max-width: 730px;
+
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    #c8d8df;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   READINESS PROGRESS
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-progress {
+  margin-top: 17px;
+}
+
+
+/* ========================================
+   PROGRESS TOP
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-progress-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  margin-bottom: 8px;
+}
+
+
+/* ========================================
+   PROGRESS LABEL
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-progress-top span {
+  color:
+    #cfdee4;
+
+  font-size: 10px;
+  font-weight: 650;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   PROGRESS VALUE
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-progress-top strong {
+  color:
+    #ffffff;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   PROGRESS TRACK
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-track {
+  width: 100%;
+  height: 8px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.13);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   PROGRESS FILL
+======================================== */
+
+.tomorrow-view
+.tomorrow-readiness-fill {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #84c3ad,
+      #aedfce
+    );
+
+  box-shadow:
+    0 0 16px
+    rgba(132, 195, 173, 0.32);
+
+  transition:
+    width 320ms ease;
+}
+
+
+/* ========================================
+   WORKSPACE
+======================================== */
+
+.tomorrow-view
+.tomorrow-workspace {
+  min-width: 0;
+
+  padding: 24px;
+
+  border:
+    1px solid
+    var(--tomorrow-border);
+
+  border-radius: 20px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    var(--tomorrow-shadow);
+}
+
+
+/* ========================================
+   WORKSPACE HEADER
+======================================== */
+
+.tomorrow-view
+.tomorrow-workspace-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 18px;
+}
+
+
+/* ========================================
+   WORKSPACE HEADER COPY
+======================================== */
+
+.tomorrow-view
+.tomorrow-workspace-header > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   WORKSPACE EYEBROW
+======================================== */
+
+.tomorrow-view
+.tomorrow-workspace-eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    var(--tomorrow-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   WORKSPACE TITLE
+======================================== */
+
+.tomorrow-view
+.tomorrow-workspace-header h2 {
+  margin: 0;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 22px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   WORKSPACE DESCRIPTION
+======================================== */
+
+.tomorrow-view
+.tomorrow-workspace-header p {
+  max-width: 720px;
+
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--tomorrow-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   GROUPS CONTAINER
+======================================== */
+
+.tomorrow-view
+.tomorrow-groups-container {
+  min-width: 0;
+}
+
+
+/* ========================================
+   GROUPS
+======================================== */
+
+.tomorrow-view
+.tomorrow-groups {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   CHILD GROUP
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-group {
+  min-width: 0;
+
+  padding: 17px;
+
+  border:
+    1px solid
+    var(--tomorrow-border);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafcfc
+    );
+
+  box-shadow:
+    0 6px 20px
+    rgba(18, 43, 59, 0.03);
+}
+
+
+/* ========================================
+   CHILD GROUP HEADER
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-bottom: 13px;
+}
+
+
+/* ========================================
+   CHILD PROFILE BUTTON
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-profile-button {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    var(--tomorrow-text);
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   CHILD AVATAR
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-avatar {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* ========================================
+   CHILD AVATAR COLOURS
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-avatar-green {
+  background:
+    #e7f3ee;
+
+  color:
+    #3f7a64;
+}
+
+
+.tomorrow-view
+.tomorrow-child-avatar-blue {
+  background:
+    #e8f1f6;
+
+  color:
+    #4d7690;
+}
+
+
+.tomorrow-view
+.tomorrow-child-avatar-purple {
+  background:
+    #eeedf6;
+
+  color:
+    #716d9c;
+}
+
+
+.tomorrow-view
+.tomorrow-child-avatar-orange {
+  background:
+    #f6eee3;
+
+  color:
+    #9c7543;
+}
+
+
+.tomorrow-view
+.tomorrow-child-avatar-rose {
+  background:
+    #f8eaec;
+
+  color:
+    #9d626a;
+}
+
+
+/* ========================================
+   CHILD PROFILE COPY
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-profile-copy {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   CHILD PROFILE EYEBROW
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-profile-copy span {
+  color:
+    var(--tomorrow-green-dark);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.09em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   CHILD NAME
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-profile-copy strong {
+  margin-top: 3px;
+
+  overflow: hidden;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 740;
+
+  letter-spacing:
+    -0.025em;
+
+  line-height: 1.35;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   CHILD ARROW
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-profile-arrow {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 31px;
+  height: 31px;
+
+  border-radius: 9px;
+
+  color:
+    #819098;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.tomorrow-view
+.tomorrow-child-profile-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+.tomorrow-view
+.tomorrow-child-profile-button:hover
+.tomorrow-child-profile-arrow {
+  background:
+    var(--tomorrow-green-soft);
+
+  color:
+    var(--tomorrow-green-dark);
+
+  transform:
+    translateX(2px);
+}
+
+
+/* ========================================
+   GROUP STATS
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-group-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   GROUP STAT PILL
+======================================== */
+
+.tomorrow-view
+.tomorrow-child-group-stats span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 29px;
+
+  padding:
+    0
+    10px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.09);
+
+  border-radius: 9px;
+
+  background:
+    var(--tomorrow-green-pale);
+
+  color:
+    var(--tomorrow-green-dark);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   TASK LIST
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+/* ========================================
+   TASK CARD
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding:
+    13px
+    14px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.075);
+
+  border-radius: 13px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 4px 14px
+    rgba(18, 43, 59, 0.025);
+
+  overflow: hidden;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease,
+    opacity 150ms ease;
+}
+
+
+.tomorrow-view
+.tomorrow-task-card:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  box-shadow:
+    0 9px 23px
+    rgba(18, 43, 59, 0.05);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   BUSY TASK
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-card.is-busy {
+  opacity: 0.58;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   COMPLETED TASK
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-card.is-completed {
+  opacity: 0.72;
+
+  background:
+    #f8faf9;
+}
+
+
+.tomorrow-view
+.tomorrow-task-card.is-completed
+.tomorrow-task-heading h3 {
+  color:
+    #7b8b92;
+
+  text-decoration:
+    line-through;
+
+  text-decoration-thickness:
+    1px;
+}
+
+
+/* ========================================
+   TASK COMPLETE BUTTON
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-complete-button {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 37px;
+  height: 37px;
+
+  padding: 0;
+
+  border:
+    1.5px solid
+    #c8d4d0;
+
+  border-radius: 10px;
+
+  background:
+    #ffffff;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.tomorrow-view
+.tomorrow-task-complete-button:hover:not(:disabled) {
+  border-color:
+    var(--tomorrow-green);
+
+  background:
+    var(--tomorrow-green-pale);
+
+  transform:
+    scale(1.04);
+}
+
+
+.tomorrow-view
+.tomorrow-task-complete-button.is-completed {
+  border-color:
+    var(--tomorrow-green);
+
+  background:
+    var(--tomorrow-green);
+
+  box-shadow:
+    0 6px 15px
+    rgba(79, 138, 115, 0.2);
+}
+
+
+.tomorrow-view
+.tomorrow-task-complete-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ========================================
+   TASK MAIN
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-main {
+  min-width: 0;
+}
+
+
+/* ========================================
+   TASK HEADING
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+/* ========================================
+   TASK TITLE
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-heading h3 {
+  min-width: 0;
+
+  margin: 0;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 710;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   TASK NOTES
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-notes {
+  max-width: 780px;
+
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--tomorrow-text-secondary);
+
+  font-size: 10px;
+
+  line-height: 1.55;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   TASK META
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+
+/* ========================================
+   META PILLS
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-meta
+> span:not(.tomorrow-task-category) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  padding:
+    0
+    8px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.06);
+
+  border-radius: 7px;
+
+  background:
+    #f4f7f7;
+
+  color:
+    #5d727d;
+
+  font-size: 9px;
+  font-weight: 620;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   TASK CATEGORY
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 24px;
+
+  padding:
+    0
+    8px;
+
+  border-radius: 7px;
+
+  font-size: 8px;
+  font-weight: 780;
+
+  letter-spacing:
+    0.035em;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   CATEGORY COLOURS
+======================================== */
+
+.tomorrow-view
+.tomorrow-task-category-general {
+  background:
+    #edf2f3;
+
+  color:
+    #526b75;
+}
+
+
+.tomorrow-view
+.tomorrow-task-category-homework {
+  background:
+    #e9f2f8;
+
+  color:
+    #4a708c;
+}
+
+
+.tomorrow-view
+.tomorrow-task-category-school {
+  background:
+    #eeedf8;
+
+  color:
+    #696595;
+}
+
+
+.tomorrow-view
+.tomorrow-task-category-chore {
+  background:
+    #e9f4ef;
+
+  color:
+    #447761;
+}
+
+
+.tomorrow-view
+.tomorrow-task-category-appointment {
+  background:
+    #f7efe4;
+
+  color:
+    #8f693b;
+}
+
+
+.tomorrow-view
+.tomorrow-task-category-reminder {
+  background:
+    #f8eaed;
+
+  color:
+    #965f68;
+}
+
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.tomorrow-view
+.tomorrow-empty-state {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 310px;
+
+  padding:
+    36px
+    24px;
+
+  border:
+    1px dashed
+    rgba(22, 50, 79, 0.11);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fafcfc,
+      #f5f9f7
+    );
+
+  text-align: center;
+}
+
+
+/* ========================================
+   EMPTY ICON
+======================================== */
+
+.tomorrow-view
+.tomorrow-empty-icon {
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  margin-bottom: 16px;
+
+  border-radius: 16px;
+
+  background:
+    var(--tomorrow-green-soft);
+
+  color:
+    var(--tomorrow-green-dark);
+}
+
+
+.tomorrow-view
+.tomorrow-empty-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* ========================================
+   EMPTY EYEBROW
+======================================== */
+
+.tomorrow-view
+.tomorrow-empty-state > span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color:
+    var(--tomorrow-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   EMPTY TITLE
+======================================== */
+
+.tomorrow-view
+.tomorrow-empty-state h2,
+.tomorrow-view
+.tomorrow-empty-state h3 {
+  margin: 0;
+
+  color:
+    var(--tomorrow-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 20px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   EMPTY DESCRIPTION
+======================================== */
+
+.tomorrow-view
+.tomorrow-empty-state p {
+  max-width: 520px;
+
+  margin:
+    8px
+    0
+    18px;
+
+  color:
+    var(--tomorrow-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   EMPTY ADD BUTTON
+======================================== */
+
+.tomorrow-view
+.tomorrow-empty-state
+.children-primary-button {
+  min-height: 43px;
+
+  padding:
+    0
+    15px;
+
+  border-radius: 11px;
+
+  font-size: 10px;
+}
+
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1500px) {
+
+  .tomorrow-view
+  .tomorrow-page-header h1 {
+    font-size: 50px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-banner {
+    padding:
+      23px
+      25px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-workspace {
+    padding: 27px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-group {
+    padding: 18px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1280px) {
+
+  .tomorrow-view
+  .tomorrow-page-header h1 {
+    font-size: 42px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .tomorrow-view
+  .tomorrow-child-group-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 11px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+  .tomorrow-view
+  .tomorrow-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 17px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-page-header h1 {
+    font-size: 39px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-control-bar {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 13px;
+  }
+
+
+  .tomorrow-view
+  #tomorrowChildFilterContainer {
+    width: 100%;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-filter {
+    width: 100%;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-filter select {
+    flex: 1;
+
+    width: 100%;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 620px) {
+
+  .tomorrow-view {
+    padding-bottom: 92px;
+  }
+
+
+  /* HEADER */
+
+  .tomorrow-view
+  .tomorrow-page-header {
+    gap: 14px;
+
+    margin-bottom: 18px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-page-eyebrow {
+    margin-bottom: 7px;
+
+    font-size: 9px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-page-header h1 {
+    font-size: 35px;
+
+    line-height: 1.06;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-page-header p {
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-page-header
+  .children-primary-button {
+    width: 100%;
+    min-height: 49px;
+
+    font-size: 12px;
+  }
+
+
+  /* CONTROL BAR */
+
+  .tomorrow-view
+  .tomorrow-control-bar {
+    margin-bottom: 10px;
+
+    padding: 13px;
+
+    border-radius: 14px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-date-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 13px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-date-details span {
+    font-size: 9px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-date-details strong {
+    font-size: 16px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-filter {
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-filter select {
+    min-height: 45px;
+
+    font-size: 11px;
+  }
+
+
+  /* SUMMARY */
+
+  .tomorrow-view
+  .tomorrow-summary-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 7px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card {
+    min-height: 106px;
+
+    padding: 13px;
+
+    border-radius: 13px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 7px 22px
+      rgba(18, 43, 59, 0.032);
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card > span {
+    font-size: 10px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card > strong {
+    font-size: 26px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card > small {
+    font-size: 9px;
+  }
+
+
+  /* READINESS BANNER */
+
+  .tomorrow-view
+  .tomorrow-readiness-banner {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 12px;
+
+    padding: 17px;
+
+    border-radius: 17px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-icon {
+    width: 47px;
+    height: 47px;
+
+    border-radius: 14px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-content > span {
+    font-size: 8px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-content h2 {
+    font-size: 18px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-content > p {
+    font-size: 10px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-progress {
+    grid-column:
+      1 / -1;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-progress-top span {
+    font-size: 9px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-progress-top strong {
+    font-size: 16px;
+  }
+
+
+  /* WORKSPACE */
+
+  .tomorrow-view
+  .tomorrow-workspace {
+    padding: 16px;
+
+    border-radius: 17px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-workspace-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 11px;
+
+    margin-bottom: 15px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-workspace-eyebrow {
+    font-size: 9px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-workspace-header h2 {
+    font-size: 19px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-workspace-header p {
+    font-size: 11px;
+  }
+
+
+  /* GROUPS */
+
+  .tomorrow-view
+  .tomorrow-groups {
+    gap: 9px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-group {
+    padding: 13px;
+
+    border-radius: 14px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-group-header {
+    margin-bottom: 11px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-avatar {
+    width: 41px;
+    height: 41px;
+
+    font-size: 13px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-profile-copy strong {
+    font-size: 14px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-group-stats span {
+    min-height: 27px;
+
+    font-size: 8px;
+  }
+
+
+  /* TASK CARD */
+
+  .tomorrow-view
+  .tomorrow-task-card {
+    gap: 9px;
+
+    padding: 11px;
+
+    border-radius: 11px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 4px 14px
+      rgba(18, 43, 59, 0.025);
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-complete-button {
+    width: 35px;
+    height: 35px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-heading {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-heading h3 {
+    font-size: 13px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-notes {
+    font-size: 10px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-category {
+    min-height: 23px;
+
+    font-size: 7px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-task-meta
+  > span:not(.tomorrow-task-category) {
+    min-height: 24px;
+
+    font-size: 8px;
+  }
+
+
+  /* EMPTY STATE */
+
+  .tomorrow-view
+  .tomorrow-empty-state {
+    min-height: 260px;
+
+    padding:
+      30px
+      18px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-empty-state h2,
+  .tomorrow-view
+  .tomorrow-empty-state h3 {
+    font-size: 18px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-empty-state p {
+    font-size: 10px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .tomorrow-view
+  .tomorrow-page-header h1 {
+    font-size: 31px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-grid {
+    gap: 6px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card {
+    min-height: 101px;
+
+    padding: 11px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-summary-card > strong {
+    font-size: 24px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-banner {
+    padding: 14px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-readiness-content h2 {
+    font-size: 17px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-workspace {
+    padding: 13px;
+  }
+
+
+  .tomorrow-view
+  .tomorrow-child-group {
+    padding: 11px;
+  }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+@media (hover: none) {
+
+  .tomorrow-view
+  .tomorrow-summary-card:hover,
+
+  .tomorrow-view
+  .tomorrow-child-profile-button:hover
+  .tomorrow-child-profile-arrow,
+
+  .tomorrow-view
+  .tomorrow-task-card:hover,
+
+  .tomorrow-view
+  .tomorrow-task-complete-button:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ========================================
+   ACCESSIBLE FOCUS STATES
+======================================== */
+
+.tomorrow-view
+button:focus-visible,
+
+.tomorrow-view
+select:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 138, 115, 0.25);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tomorrow-view
+  .tomorrow-summary-card,
+
+  .tomorrow-view
+  .tomorrow-readiness-fill,
+
+  .tomorrow-view
+  .tomorrow-child-profile-arrow,
+
+  .tomorrow-view
+  .tomorrow-task-card,
+
+  .tomorrow-view
+  .tomorrow-task-complete-button {
+    transition: none;
+  }
+
+}

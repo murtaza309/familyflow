@@ -1,0 +1,2338 @@
+/* ========================================
+   FAMILYFLOW
+   COMPLETE TODAY SCREEN REDESIGN
+
+   Dedicated styling for the global
+   Today screen only.
+
+   Sidebar, header, dashboard, children,
+   planner and tomorrow remain untouched.
+======================================== */
+
+
+/* ========================================
+   TODAY DESIGN TOKENS
+======================================== */
+
+.today-view {
+
+  --today-navy:
+    #16324f;
+
+  --today-navy-deep:
+    #102a43;
+
+  --today-green:
+    #4f8a73;
+
+  --today-green-dark:
+    #39705c;
+
+  --today-green-light:
+    #e9f4ef;
+
+  --today-green-pale:
+    #f3f8f6;
+
+  --today-blue-light:
+    #eaf4f9;
+
+  --today-blue:
+    #4f7d96;
+
+  --today-text:
+    #172c3c;
+
+  --today-text-secondary:
+    #516874;
+
+  --today-text-muted:
+    #70828c;
+
+  --today-border:
+    rgba(22, 50, 79, 0.08);
+
+  --today-border-medium:
+    rgba(22, 50, 79, 0.13);
+
+  --today-surface:
+    #ffffff;
+
+  --today-surface-soft:
+    #f8faf9;
+
+  --today-shadow:
+    0 12px 38px
+    rgba(18, 43, 59, 0.05);
+
+  --today-shadow-hover:
+    0 16px 42px
+    rgba(18, 43, 59, 0.075);
+
+}
+
+
+/* ========================================
+   TODAY VIEW ROOT
+======================================== */
+
+.today-view {
+  width: 100%;
+  min-width: 0;
+
+  padding-bottom: 46px;
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.today-view
+.today-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  margin-bottom: 22px;
+}
+
+
+/* ========================================
+   PAGE HEADER COPY
+======================================== */
+
+.today-view
+.today-page-header > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   PAGE EYEBROW
+======================================== */
+
+.today-view
+.today-page-eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    var(--today-green-dark);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.13em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   PAGE TITLE
+======================================== */
+
+.today-view
+.today-page-header h1 {
+  margin: 0;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size:
+    clamp(
+      38px,
+      3.8vw,
+      52px
+    );
+
+  font-weight: 780;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1.03;
+}
+
+
+/* ========================================
+   PAGE DESCRIPTION
+======================================== */
+
+.today-view
+.today-page-header p {
+  max-width: 680px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(--today-text-secondary);
+
+  font-size: 14px;
+  font-weight: 450;
+
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   HEADER ADD TASK BUTTON
+======================================== */
+
+.today-view
+.children-primary-button {
+  flex-shrink: 0;
+
+  min-height: 49px;
+
+  padding:
+    0
+    20px;
+
+  border-radius: 14px;
+
+  font-size: 13px;
+  font-weight: 720;
+
+  box-shadow:
+    0 9px 25px
+    rgba(22, 50, 79, 0.1);
+}
+
+
+/* ========================================
+   TODAY DATE BANNER
+======================================== */
+
+.today-view
+.today-date-banner {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 0;
+
+  margin-bottom: 14px;
+
+  padding:
+    16px
+    19px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.1);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f9fcfb 60%,
+      #eef6f2 100%
+    );
+
+  box-shadow:
+    0 9px 28px
+    rgba(18, 43, 59, 0.035);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   DATE BANNER DECORATION
+======================================== */
+
+.today-view
+.today-date-banner::after {
+  content: '';
+
+  position: absolute;
+
+  top: -85px;
+  right: -45px;
+
+  width: 190px;
+  height: 190px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 138, 115, 0.08),
+      rgba(79, 138, 115, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   DATE ICON
+======================================== */
+
+.today-view
+.today-date-icon {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 15px;
+
+  background:
+    var(--today-green-light);
+
+  color:
+    var(--today-green-dark);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(79, 138, 115, 0.05);
+}
+
+
+.today-view
+.today-date-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* ========================================
+   DATE DETAILS
+======================================== */
+
+.today-view
+.today-date-banner > div:last-child {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+.today-view
+.today-date-banner
+> div:last-child
+> span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    var(--today-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+.today-view
+.today-date-banner
+> div:last-child
+> strong {
+  display: block;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   TODAY SUMMARY GRID
+======================================== */
+
+.today-view
+.today-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+
+/* ========================================
+   SUMMARY CARDS
+======================================== */
+
+.today-view
+.today-summary-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 124px;
+
+  padding:
+    18px
+    18px;
+
+  border:
+    1px solid
+    var(--today-border);
+
+  border-radius: 17px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 8px 26px
+    rgba(18, 43, 59, 0.035);
+
+  overflow: hidden;
+
+  transition:
+    border-color 170ms ease,
+    box-shadow 170ms ease,
+    transform 170ms ease;
+}
+
+
+.today-view
+.today-summary-card:hover {
+  border-color:
+    var(--today-border-medium);
+
+  box-shadow:
+    var(--today-shadow-hover);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* ========================================
+   SUMMARY DECORATION
+======================================== */
+
+.today-view
+.today-summary-card::after {
+  content: '';
+
+  position: absolute;
+
+  right: -42px;
+  bottom: -52px;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 138, 115, 0.055),
+      rgba(79, 138, 115, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   SUMMARY LABEL
+======================================== */
+
+.today-view
+.today-summary-card > span {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  color:
+    var(--today-text-secondary);
+
+  font-size: 12px;
+  font-weight: 680;
+
+  line-height: 1.35;
+}
+
+
+/* ========================================
+   SUMMARY NUMBER
+======================================== */
+
+.today-view
+.today-summary-card > strong {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 10px;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 32px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   SUMMARY DETAIL
+======================================== */
+
+.today-view
+.today-summary-card > small {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 9px;
+
+  color:
+    var(--today-text-muted);
+
+  font-size: 11px;
+  font-weight: 500;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   PROGRESS CARD
+======================================== */
+
+.today-view
+.today-progress-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 124px;
+
+  padding:
+    18px
+    18px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.1);
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f3f8f6
+    );
+
+  box-shadow:
+    0 8px 26px
+    rgba(18, 43, 59, 0.035);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   PROGRESS CARD TOP
+======================================== */
+
+.today-view
+.today-progress-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+
+.today-view
+.today-progress-card-top span {
+  color:
+    var(--today-text-secondary);
+
+  font-size: 12px;
+  font-weight: 680;
+
+  line-height: 1.35;
+}
+
+
+.today-view
+.today-progress-card-top strong {
+  color:
+    var(--today-green-dark);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   PROGRESS TRACK
+======================================== */
+
+.today-view
+.today-progress-track {
+  width: 100%;
+  height: 8px;
+
+  border-radius: 999px;
+
+  background:
+    #dfe8e4;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   PROGRESS FILL
+======================================== */
+
+.today-view
+.today-progress-fill {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #4f8a73,
+      #72a890
+    );
+
+  transition:
+    width 320ms ease;
+}
+
+
+/* ========================================
+   PROGRESS DETAIL
+======================================== */
+
+.today-view
+.today-progress-card > small {
+  display: block;
+
+  margin-top: 11px;
+
+  color:
+    var(--today-text-muted);
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   MAIN WORKSPACE
+======================================== */
+
+.today-view
+.today-workspace {
+  min-width: 0;
+
+  padding:
+    26px;
+
+  border:
+    1px solid
+    var(--today-border);
+
+  border-radius: 21px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    var(--today-shadow);
+}
+
+
+/* ========================================
+   WORKSPACE HEADER
+======================================== */
+
+.today-view
+.today-workspace-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 18px;
+}
+
+
+/* ========================================
+   WORKSPACE COPY
+======================================== */
+
+.today-view
+.today-workspace-header > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   WORKSPACE EYEBROW
+======================================== */
+
+.today-view
+.today-workspace-eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    var(--today-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   WORKSPACE TITLE
+======================================== */
+
+.today-view
+.today-workspace-header h2 {
+  margin: 0;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 22px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   WORKSPACE DESCRIPTION
+======================================== */
+
+.today-view
+.today-workspace-header p {
+  max-width: 660px;
+
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--today-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   FILTER BAR
+======================================== */
+
+.today-view
+.today-filter-bar {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  margin-bottom: 18px;
+
+  padding: 5px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.08);
+
+  border-radius: 12px;
+
+  background:
+    #f3f6f5;
+}
+
+
+/* ========================================
+   FILTER BUTTON
+======================================== */
+
+.today-view
+.today-filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 38px;
+
+  padding:
+    0
+    14px;
+
+  border: 0;
+  border-radius: 9px;
+
+  background:
+    transparent;
+
+  color:
+    var(--today-text-muted);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+/* ========================================
+   ACTIVE FILTER
+======================================== */
+
+.today-view
+.today-filter-button.is-active {
+  background:
+    #ffffff;
+
+  color:
+    var(--today-green-dark);
+
+  box-shadow:
+    0 4px 12px
+    rgba(18, 43, 59, 0.06);
+}
+
+
+/* ========================================
+   FILTER COUNT
+======================================== */
+
+.today-view
+.today-filter-button span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 23px;
+  height: 23px;
+
+  padding:
+    0
+    6px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(22, 50, 79, 0.05);
+
+  color:
+    var(--today-text-muted);
+
+  font-size: 8px;
+  font-weight: 760;
+}
+
+
+.today-view
+.today-filter-button.is-active
+span {
+  background:
+    var(--today-green-light);
+
+  color:
+    var(--today-green-dark);
+}
+
+
+/* ========================================
+   TASK LIST CONTAINER
+======================================== */
+
+.today-view
+.today-task-list-container {
+  min-width: 0;
+}
+
+
+/* ========================================
+   TASK LIST
+======================================== */
+
+.today-view
+.today-task-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+/* ========================================
+   TODAY TASK CARD
+======================================== */
+
+.today-view
+.today-task-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+
+  padding:
+    15px
+    16px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.08);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafcfc
+    );
+
+  box-shadow:
+    0 4px 15px
+    rgba(18, 43, 59, 0.025);
+
+  overflow: hidden;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+
+/* ========================================
+   TASK CARD HOVER
+======================================== */
+
+.today-view
+.today-task-card:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  box-shadow:
+    0 10px 25px
+    rgba(18, 43, 59, 0.055);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   BUSY TASK
+======================================== */
+
+.today-view
+.today-task-card.is-busy {
+  opacity: 0.6;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   COMPLETED TASK
+======================================== */
+
+.today-view
+.today-task-card.is-completed {
+  opacity: 0.72;
+
+  background:
+    #f8faf9;
+}
+
+
+.today-view
+.today-task-card.is-completed
+.today-task-heading h3 {
+  color:
+    #7b8b92;
+
+  text-decoration:
+    line-through;
+
+  text-decoration-thickness:
+    1px;
+}
+
+
+/* ========================================
+   COMPLETE BUTTON
+======================================== */
+
+.today-view
+.today-task-complete-button {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 39px;
+  height: 39px;
+
+  padding: 0;
+
+  border:
+    1.5px solid
+    #c8d4d0;
+
+  border-radius: 11px;
+
+  background:
+    #ffffff;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.today-view
+.today-task-complete-button:hover:not(:disabled) {
+  border-color:
+    var(--today-green);
+
+  background:
+    var(--today-green-pale);
+
+  transform:
+    scale(1.04);
+}
+
+
+.today-view
+.today-task-complete-button.is-completed {
+  border-color:
+    var(--today-green);
+
+  background:
+    var(--today-green);
+
+  box-shadow:
+    0 6px 15px
+    rgba(79, 138, 115, 0.2);
+}
+
+
+.today-view
+.today-task-complete-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+
+/* ========================================
+   TASK MAIN
+======================================== */
+
+.today-view
+.today-task-main {
+  min-width: 0;
+}
+
+
+/* ========================================
+   TASK HEADING
+======================================== */
+
+.today-view
+.today-task-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   TASK TITLE
+======================================== */
+
+.today-view
+.today-task-heading h3 {
+  min-width: 0;
+
+  margin: 0;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 14px;
+  font-weight: 710;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   TASK NOTES
+======================================== */
+
+.today-view
+.today-task-notes {
+  max-width: 760px;
+
+  margin:
+    6px
+    0
+    0;
+
+  color:
+    var(--today-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.55;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   TASK META
+======================================== */
+
+.today-view
+.today-task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+
+/* ========================================
+   TASK TIME
+======================================== */
+
+.today-view
+.today-task-time,
+.today-view
+.today-task-meta > span:not(
+  .today-task-category
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 26px;
+
+  padding:
+    0
+    9px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.06);
+
+  border-radius: 8px;
+
+  background:
+    #f4f7f7;
+
+  color:
+    #5d727d;
+
+  font-size: 9px;
+  font-weight: 620;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   TASK CATEGORY
+======================================== */
+
+.today-view
+.today-task-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 25px;
+
+  padding:
+    0
+    9px;
+
+  border-radius: 8px;
+
+  font-size: 8px;
+  font-weight: 780;
+
+  letter-spacing:
+    0.035em;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   CATEGORY VARIANTS
+======================================== */
+
+.today-view
+.today-task-category-general {
+  background:
+    #edf2f3;
+
+  color:
+    #526b75;
+}
+
+
+.today-view
+.today-task-category-homework {
+  background:
+    #e9f2f8;
+
+  color:
+    #4a708c;
+}
+
+
+.today-view
+.today-task-category-school {
+  background:
+    #eeedf8;
+
+  color:
+    #696595;
+}
+
+
+.today-view
+.today-task-category-chore {
+  background:
+    #e9f4ef;
+
+  color:
+    #447761;
+}
+
+
+.today-view
+.today-task-category-appointment {
+  background:
+    #f7efe4;
+
+  color:
+    #8f693b;
+}
+
+
+.today-view
+.today-task-category-reminder {
+  background:
+    #f8eaed;
+
+  color:
+    #965f68;
+}
+
+
+/* ========================================
+   TASK CHILD BUTTON
+======================================== */
+
+.today-view
+.today-task-child {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 9px;
+
+  flex-shrink: 0;
+
+  min-width: 145px;
+  max-width: 190px;
+
+  padding:
+    7px
+    8px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.075);
+
+  border-radius: 11px;
+
+  background:
+    #ffffff;
+
+  color:
+    var(--today-text);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.today-view
+.today-task-child:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  background:
+    var(--today-green-pale);
+
+  box-shadow:
+    0 6px 17px
+    rgba(18, 43, 59, 0.04);
+
+  transform:
+    translateX(1px);
+}
+
+
+/* ========================================
+   CHILD AVATAR
+======================================== */
+
+.today-view
+.today-task-child-avatar {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 11px;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+.today-view
+.today-task-child-avatar-green {
+  background:
+    #e7f3ee;
+
+  color:
+    #3f7a64;
+}
+
+
+.today-view
+.today-task-child-avatar-blue {
+  background:
+    #e8f1f6;
+
+  color:
+    #4d7690;
+}
+
+
+.today-view
+.today-task-child-avatar-purple {
+  background:
+    #eeedf6;
+
+  color:
+    #716d9c;
+}
+
+
+.today-view
+.today-task-child-avatar-orange {
+  background:
+    #f6eee3;
+
+  color:
+    #9c7543;
+}
+
+
+.today-view
+.today-task-child-avatar-rose {
+  background:
+    #f8eaec;
+
+  color:
+    #9d626a;
+}
+
+
+/* ========================================
+   CHILD DETAILS
+======================================== */
+
+.today-view
+.today-task-child-details {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+
+.today-view
+.today-task-child-details small {
+  display: block;
+
+  color:
+    var(--today-text-muted);
+
+  font-size: 8px;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+
+.today-view
+.today-task-child-details strong {
+  display: block;
+
+  margin-top: 2px;
+
+  overflow: hidden;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 720;
+
+  line-height: 1.3;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   CHILD ARROW
+======================================== */
+
+.today-view
+.today-task-child-arrow {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 8px;
+
+  color:
+    #829097;
+}
+
+
+.today-view
+.today-task-child-arrow svg {
+  width: 13px;
+  height: 13px;
+}
+
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.today-view
+.today-empty-state {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 310px;
+
+  padding:
+    38px
+    24px;
+
+  border:
+    1px dashed
+    rgba(22, 50, 79, 0.12);
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fafcfc,
+      #f5f9f7
+    );
+
+  text-align: center;
+}
+
+
+/* ========================================
+   EMPTY ICON
+======================================== */
+
+.today-view
+.today-empty-icon {
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  margin-bottom: 17px;
+
+  border-radius: 16px;
+
+  background:
+    var(--today-green-light);
+
+  color:
+    var(--today-green-dark);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(79, 138, 115, 0.05);
+}
+
+
+.today-view
+.today-empty-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* ========================================
+   EMPTY EYEBROW
+======================================== */
+
+.today-view
+.today-empty-eyebrow {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color:
+    var(--today-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   EMPTY TITLE
+======================================== */
+
+.today-view
+.today-empty-state h2 {
+  margin: 0;
+
+  color:
+    var(--today-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 21px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   EMPTY DESCRIPTION
+======================================== */
+
+.today-view
+.today-empty-state p {
+  max-width: 510px;
+
+  margin:
+    9px
+    0
+    19px;
+
+  color:
+    var(--today-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1500px) {
+
+  .today-view
+  .today-page-header h1 {
+    font-size: 50px;
+  }
+
+
+  .today-view
+  .today-date-banner {
+    padding:
+      17px
+      21px;
+  }
+
+
+  .today-view
+  .today-summary-card,
+  .today-view
+  .today-progress-card {
+    min-height: 130px;
+
+    padding: 20px;
+  }
+
+
+  .today-view
+  .today-workspace {
+    padding: 29px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1280px) {
+
+  .today-view
+  .today-page-header h1 {
+    font-size: 42px;
+  }
+
+
+  .today-view
+  .today-summary-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .today-view
+  .today-task-card {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+  }
+
+
+  .today-view
+  .today-task-child {
+    grid-column:
+      2;
+
+    width: fit-content;
+    max-width: 230px;
+
+    margin-top: 3px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+  .today-view
+  .today-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 17px;
+  }
+
+
+  .today-view
+  .today-page-header h1 {
+    font-size: 39px;
+  }
+
+
+  .today-view
+  .today-workspace-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 620px) {
+
+  .today-view {
+    padding-bottom: 92px;
+  }
+
+
+  /* PAGE HEADER */
+
+  .today-view
+  .today-page-header {
+    gap: 14px;
+
+    margin-bottom: 18px;
+  }
+
+
+  .today-view
+  .today-page-eyebrow {
+    margin-bottom: 7px;
+
+    font-size: 9px;
+  }
+
+
+  .today-view
+  .today-page-header h1 {
+    font-size: 35px;
+
+    line-height: 1.06;
+  }
+
+
+  .today-view
+  .today-page-header p {
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+  }
+
+
+  .today-view
+  .children-primary-button {
+    width: 100%;
+    min-height: 49px;
+
+    font-size: 12px;
+  }
+
+
+  /* DATE BANNER */
+
+  .today-view
+  .today-date-banner {
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 15px;
+  }
+
+
+  .today-view
+  .today-date-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 13px;
+  }
+
+
+  .today-view
+  .today-date-banner
+  > div:last-child
+  > strong {
+    font-size: 16px;
+  }
+
+
+  /* SUMMARY */
+
+  .today-view
+  .today-summary-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+  }
+
+
+  .today-view
+  .today-summary-card,
+  .today-view
+  .today-progress-card {
+    min-height: 146px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+
+
+  .today-view
+  .today-summary-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 8px 26px
+      rgba(18, 43, 59, 0.035);
+  }
+
+
+  .today-view
+  .today-summary-card > span,
+  .today-view
+  .today-progress-card-top span {
+    font-size: 10px;
+  }
+
+
+  .today-view
+  .today-summary-card > strong {
+    font-size: 28px;
+  }
+
+
+  .today-view
+  .today-summary-card > small,
+  .today-view
+  .today-progress-card > small {
+    font-size: 9px;
+  }
+
+
+  .today-view
+  .today-progress-card-top strong {
+    font-size: 19px;
+  }
+
+
+  /* WORKSPACE */
+
+  .today-view
+  .today-workspace {
+    padding: 17px;
+
+    border-radius: 17px;
+  }
+
+
+  .today-view
+  .today-workspace-header {
+    margin-bottom: 15px;
+  }
+
+
+  .today-view
+  .today-workspace-eyebrow {
+    font-size: 9px;
+  }
+
+
+  .today-view
+  .today-workspace-header h2 {
+    font-size: 19px;
+  }
+
+
+  .today-view
+  .today-workspace-header p {
+    font-size: 11px;
+  }
+
+
+  /* FILTER BAR */
+
+  .today-view
+  .today-filter-bar {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+    width: 100%;
+
+    gap: 4px;
+
+    margin-bottom: 15px;
+  }
+
+
+  .today-view
+  .today-filter-button {
+    width: 100%;
+
+    padding:
+      0
+      8px;
+
+    font-size: 10px;
+  }
+
+
+  /* TASK CARD */
+
+  .today-view
+  .today-task-card {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+  }
+
+
+  .today-view
+  .today-task-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 4px 15px
+      rgba(18, 43, 59, 0.025);
+  }
+
+
+  .today-view
+  .today-task-complete-button {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+  }
+
+
+  .today-view
+  .today-task-heading {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+
+  .today-view
+  .today-task-heading h3 {
+    font-size: 13px;
+  }
+
+
+  .today-view
+  .today-task-notes {
+    font-size: 10px;
+  }
+
+
+  .today-view
+  .today-task-category {
+    min-height: 23px;
+
+    font-size: 7px;
+  }
+
+
+  .today-view
+  .today-task-time,
+  .today-view
+  .today-task-meta
+  > span:not(.today-task-category) {
+    min-height: 25px;
+
+    font-size: 8px;
+  }
+
+
+  /* CHILD BUTTON */
+
+  .today-view
+  .today-task-child {
+    grid-column:
+      1 / -1;
+
+    width: 100%;
+    max-width: none;
+
+    margin-top: 3px;
+
+    padding: 8px;
+  }
+
+
+  .today-view
+  .today-task-child-avatar {
+    width: 37px;
+    height: 37px;
+  }
+
+
+  .today-view
+  .today-task-child-details strong {
+    font-size: 11px;
+  }
+
+
+  /* EMPTY STATE */
+
+  .today-view
+  .today-empty-state {
+    min-height: 260px;
+
+    padding:
+      30px
+      18px;
+  }
+
+
+  .today-view
+  .today-empty-state h2 {
+    font-size: 19px;
+  }
+
+
+  .today-view
+  .today-empty-state p {
+    font-size: 11px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .today-view
+  .today-page-header h1 {
+    font-size: 31px;
+  }
+
+
+  .today-view
+  .today-summary-grid {
+    gap: 7px;
+  }
+
+
+  .today-view
+  .today-summary-card,
+  .today-view
+  .today-progress-card {
+    min-height: 138px;
+
+    padding: 13px;
+  }
+
+
+  .today-view
+  .today-summary-card > strong {
+    font-size: 26px;
+  }
+
+
+  .today-view
+  .today-workspace {
+    padding: 15px;
+  }
+
+
+  .today-view
+  .today-workspace-header h2 {
+    font-size: 18px;
+  }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+@media (hover: none) {
+
+  .today-view
+  .today-summary-card:hover,
+
+  .today-view
+  .today-task-card:hover,
+
+  .today-view
+  .today-task-complete-button:hover,
+
+  .today-view
+  .today-task-child:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ========================================
+   ACCESSIBLE FOCUS STATES
+======================================== */
+
+.today-view
+button:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 138, 115, 0.25);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .today-view
+  .today-summary-card,
+
+  .today-view
+  .today-progress-fill,
+
+  .today-view
+  .today-filter-button,
+
+  .today-view
+  .today-task-card,
+
+  .today-view
+  .today-task-complete-button,
+
+  .today-view
+  .today-task-child {
+    transition: none;
+  }
+
+}

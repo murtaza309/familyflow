@@ -1,0 +1,3303 @@
+/* ========================================
+   FAMILYFLOW — CHILD PROFILE
+   Complete replacement stylesheet
+
+   Matches the actual current children.js
+   markup exactly.
+
+   Goals:
+   - readable typography
+   - compact, not bulky
+   - same visual language as Dashboard/Today
+   - proper three-part hero
+   - strong mobile responsiveness
+======================================== */
+
+
+/* ========================================
+   DESIGN TOKENS
+======================================== */
+
+.children-view
+.child-profile-container {
+
+  --cp-navy:
+    #16324f;
+
+  --cp-navy-deep:
+    #102a43;
+
+  --cp-green:
+    #4f8a73;
+
+  --cp-green-dark:
+    #39705c;
+
+  --cp-green-soft:
+    #e9f4ef;
+
+  --cp-green-pale:
+    #f4f9f7;
+
+  --cp-blue-soft:
+    #eaf4f9;
+
+  --cp-blue:
+    #4f7d96;
+
+  --cp-gold-soft:
+    #f8f0e5;
+
+  --cp-gold:
+    #9b713e;
+
+  --cp-purple-soft:
+    #f0eff9;
+
+  --cp-purple:
+    #716ca1;
+
+  --cp-rose-soft:
+    #f9eaed;
+
+  --cp-rose:
+    #9a606a;
+
+  --cp-text:
+    #172c3c;
+
+  --cp-text-secondary:
+    #526875;
+
+  --cp-text-muted:
+    #71838d;
+
+  --cp-border:
+    rgba(22, 50, 79, 0.08);
+
+  --cp-border-medium:
+    rgba(22, 50, 79, 0.13);
+
+  --cp-surface:
+    #ffffff;
+
+  --cp-surface-soft:
+    #f8faf9;
+
+  --cp-shadow:
+    0 11px 34px
+    rgba(18, 43, 59, 0.045);
+
+  --cp-shadow-hover:
+    0 16px 42px
+    rgba(18, 43, 59, 0.075);
+
+}
+
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.children-view
+.child-profile-container {
+  width: 100%;
+  min-width: 0;
+}
+
+
+.children-view
+.child-profile-container[hidden] {
+  display: none !important;
+}
+
+
+/* ========================================
+   COMPLETE PROFILE VIEW
+======================================== */
+
+.children-view
+.child-profile-view {
+  width: 100%;
+  min-width: 0;
+
+  padding-bottom: 48px;
+
+  animation:
+    childProfileEnter
+    240ms ease;
+}
+
+
+@keyframes childProfileEnter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* ========================================
+   TOPBAR
+======================================== */
+
+.children-view
+.child-profile-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-bottom: 14px;
+}
+
+
+/* ========================================
+   BACK BUTTON
+======================================== */
+
+.children-view
+.child-profile-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding:
+    0
+    14px;
+
+  border:
+    1px solid
+    var(--cp-border);
+
+  border-radius: 11px;
+
+  background:
+    #ffffff;
+
+  color:
+    var(--cp-text);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 16px
+    rgba(18, 43, 59, 0.025);
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.children-view
+.child-profile-back-button:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  background:
+    var(--cp-green-pale);
+
+  color:
+    var(--cp-green-dark);
+
+  box-shadow:
+    0 7px 18px
+    rgba(18, 43, 59, 0.045);
+
+  transform:
+    translateX(-2px);
+}
+
+
+/* ========================================
+   BACK ARROW
+======================================== */
+
+.children-view
+.child-profile-back-arrow {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   EDIT PROFILE BUTTON
+======================================== */
+
+.children-view
+.child-profile-edit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding:
+    0
+    14px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.15);
+
+  border-radius: 11px;
+
+  background:
+    var(--cp-green-pale);
+
+  color:
+    var(--cp-green-dark);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.children-view
+.child-profile-edit-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+.children-view
+.child-profile-edit-button:hover {
+  border-color:
+    rgba(79, 138, 115, 0.27);
+
+  background:
+    var(--cp-green-soft);
+
+  box-shadow:
+    0 7px 18px
+    rgba(49, 100, 81, 0.07);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   PROFILE HERO
+
+   ACTUAL MARKUP:
+   1. Avatar
+   2. Identity
+   3. Workspace message
+======================================== */
+
+.children-view
+.child-profile-hero {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    minmax(220px, 0.48fr);
+
+  align-items: center;
+
+  gap: 22px;
+
+  min-width: 0;
+
+  margin-bottom: 12px;
+
+  padding:
+    25px
+    27px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.1);
+
+  border-radius: 21px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fafcfb 52%,
+      #f0f7f4 100%
+    );
+
+  box-shadow:
+    var(--cp-shadow);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   HERO DECORATION
+======================================== */
+
+.children-view
+.child-profile-hero::before {
+  content: '';
+
+  position: absolute;
+
+  top: -120px;
+  right: -75px;
+
+  width: 300px;
+  height: 300px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.06);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.children-view
+.child-profile-hero::after {
+  content: '';
+
+  position: absolute;
+
+  top: -55px;
+  right: 10px;
+
+  width: 170px;
+  height: 170px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 138, 115, 0.07),
+      rgba(79, 138, 115, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   PROFILE AVATAR
+======================================== */
+
+.children-view
+.child-profile-avatar {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 76px;
+  height: 76px;
+
+  border-radius: 21px;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 27px;
+  font-weight: 820;
+
+  letter-spacing:
+    -0.05em;
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255, 255, 255, 0.38),
+    0 11px 26px
+    rgba(18, 43, 59, 0.065);
+}
+
+
+/* ========================================
+   AVATAR COLOURS
+======================================== */
+
+.children-view
+.child-profile-avatar-green {
+  background:
+    #e2f1ea;
+
+  color:
+    #3f7a64;
+}
+
+
+.children-view
+.child-profile-avatar-blue {
+  background:
+    #e5eff5;
+
+  color:
+    #4d7690;
+}
+
+
+.children-view
+.child-profile-avatar-purple {
+  background:
+    #ecebf6;
+
+  color:
+    #716d9c;
+}
+
+
+.children-view
+.child-profile-avatar-orange {
+  background:
+    #f5ebdd;
+
+  color:
+    #9c7543;
+}
+
+
+.children-view
+.child-profile-avatar-rose {
+  background:
+    #f6e7e9;
+
+  color:
+    #9d626a;
+}
+
+
+/* ========================================
+   CHILD IDENTITY
+======================================== */
+
+.children-view
+.child-profile-identity {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   CHILD PROFILE EYEBROW
+======================================== */
+
+.children-view
+.child-profile-eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   CHILD NAME
+======================================== */
+
+.children-view
+.child-profile-identity h1 {
+  margin: 0;
+
+  overflow: hidden;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size:
+    clamp(
+      35px,
+      3.5vw,
+      47px
+    );
+
+  font-weight: 790;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1.04;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   YEAR GROUP
+======================================== */
+
+.children-view
+.child-profile-identity > p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 12px;
+  font-weight: 550;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   HERO WORKSPACE MESSAGE
+======================================== */
+
+.children-view
+.child-profile-hero-message {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+
+  padding:
+    14px
+    15px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.11);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+/* ========================================
+   WORKSPACE MESSAGE LABEL
+======================================== */
+
+.children-view
+.child-profile-hero-message > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.1em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   WORKSPACE MESSAGE BODY
+======================================== */
+
+.children-view
+.child-profile-hero-message > p {
+  margin: 0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+/* ========================================
+   PROFILE METRICS
+======================================== */
+
+.children-view
+.child-profile-metrics {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+
+/* ========================================
+   PROFILE METRIC
+======================================== */
+
+.children-view
+.child-profile-metric {
+  position: relative;
+
+  min-width: 0;
+  min-height: 112px;
+
+  padding:
+    16px
+    17px;
+
+  border:
+    1px solid
+    var(--cp-border);
+
+  border-radius: 15px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 7px 22px
+    rgba(18, 43, 59, 0.032);
+
+  overflow: hidden;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.children-view
+.child-profile-metric:hover {
+  border-color:
+    var(--cp-border-medium);
+
+  box-shadow:
+    var(--cp-shadow-hover);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   METRIC DECORATION
+======================================== */
+
+.children-view
+.child-profile-metric::after {
+  content: '';
+
+  position: absolute;
+
+  right: -40px;
+  bottom: -48px;
+
+  width: 115px;
+  height: 115px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 138, 115, 0.055),
+      rgba(79, 138, 115, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   METRIC LABEL
+======================================== */
+
+.children-view
+.child-profile-metric > span {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 11px;
+  font-weight: 680;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   METRIC NUMBER
+======================================== */
+
+.children-view
+.child-profile-metric > strong {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 9px;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   METRIC DESCRIPTION
+======================================== */
+
+.children-view
+.child-profile-metric > small {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    var(--cp-text-muted);
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   PROFILE TABS
+======================================== */
+
+.children-view
+.child-profile-tabs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      6,
+      minmax(0, 1fr)
+    );
+
+  gap: 4px;
+
+  margin-bottom: 12px;
+
+  padding: 5px;
+
+  border:
+    1px solid
+    var(--cp-border);
+
+  border-radius: 14px;
+
+  background:
+    #f3f6f5;
+}
+
+
+/* ========================================
+   PROFILE TAB
+======================================== */
+
+.children-view
+.child-profile-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 40px;
+
+  padding:
+    0
+    12px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background:
+    transparent;
+
+  color:
+    var(--cp-text-muted);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+/* ========================================
+   ACTIVE PROFILE TAB
+======================================== */
+
+.children-view
+.child-profile-tab.is-active {
+  background:
+    #ffffff;
+
+  color:
+    var(--cp-green-dark);
+
+  box-shadow:
+    0 5px 14px
+    rgba(18, 43, 59, 0.06);
+}
+
+
+/* ========================================
+   TAB CONTENT
+======================================== */
+
+.children-view
+.child-profile-tab-content {
+  min-width: 0;
+
+  animation:
+    childProfileTabEnter
+    200ms ease;
+}
+
+
+@keyframes childProfileTabEnter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* ========================================
+   OVERVIEW GRID
+======================================== */
+
+.children-view
+.child-profile-overview-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  align-items: start;
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   OVERVIEW PANEL
+======================================== */
+
+.children-view
+.child-profile-panel {
+  min-width: 0;
+
+  padding: 19px;
+
+  border:
+    1px solid
+    var(--cp-border);
+
+  border-radius: 17px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    var(--cp-shadow);
+}
+
+
+/* ========================================
+   PROFILE PANEL HEADER
+======================================== */
+
+.children-view
+.child-profile-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 13px;
+}
+
+
+.children-view
+.child-profile-panel-header > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   PANEL EYEBROW
+======================================== */
+
+.children-view
+.child-profile-panel-header
+> div
+> span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   PANEL TITLE
+
+   Actual markup uses H3
+======================================== */
+
+.children-view
+.child-profile-panel-header h3 {
+  margin: 0;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 19px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   PANEL COUNT
+======================================== */
+
+.children-view
+.child-profile-panel-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-width: 35px;
+  height: 35px;
+
+  padding:
+    0
+    8px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.1);
+
+  border-radius: 10px;
+
+  background:
+    var(--cp-green-pale);
+
+  color:
+    var(--cp-green-dark);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* ========================================
+   EMPTY PANEL
+======================================== */
+
+.children-view
+.child-profile-empty-panel {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 13px;
+
+  min-height: 112px;
+
+  padding: 15px;
+
+  border:
+    1px dashed
+    rgba(22, 50, 79, 0.11);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fafcfc,
+      #f5f9f7
+    );
+}
+
+
+/* ========================================
+   EMPTY PANEL ICON
+======================================== */
+
+.children-view
+.child-profile-empty-icon {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 13px;
+
+  background:
+    var(--cp-green-soft);
+
+  color:
+    var(--cp-green-dark);
+}
+
+
+.children-view
+.child-profile-empty-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* ========================================
+   EMPTY COPY
+======================================== */
+
+.children-view
+.child-profile-empty-copy {
+  min-width: 0;
+}
+
+
+/* ========================================
+   EMPTY EYEBROW
+======================================== */
+
+.children-view
+.child-profile-empty-eyebrow {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.1em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   EMPTY TITLE
+======================================== */
+
+.children-view
+.child-profile-empty-copy h3 {
+  margin: 0;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 720;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   EMPTY DESCRIPTION
+======================================== */
+
+.children-view
+.child-profile-empty-copy p {
+  margin:
+    4px
+    0
+    0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 10px;
+
+  line-height: 1.55;
+}
+
+
+/* ========================================
+   EMPTY ACTION
+
+   This is third grid child when present.
+======================================== */
+
+.children-view
+.child-profile-empty-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  grid-column:
+    1 / -1;
+
+  justify-self: flex-start;
+
+  min-height: 36px;
+
+  margin-top: 2px;
+
+  padding:
+    0
+    11px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.13);
+
+  border-radius: 9px;
+
+  background:
+    #ffffff;
+
+  color:
+    var(--cp-green-dark);
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 720;
+}
+
+
+.children-view
+.child-profile-empty-action:not(:disabled) {
+  cursor: pointer;
+}
+
+
+.children-view
+.child-profile-empty-action:disabled {
+  opacity: 0.75;
+
+  cursor: default;
+}
+
+
+/* ========================================
+   PARENT NOTES PANEL
+
+   In your markup this is inside the
+   same overview grid, but should span
+   the full width.
+======================================== */
+
+.children-view
+.child-profile-notes-panel {
+  grid-column:
+    1 / -1;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   SMALL EDIT ACTION
+======================================== */
+
+.children-view
+.child-profile-small-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  gap: 6px;
+
+  min-height: 36px;
+
+  padding:
+    0
+    11px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.13);
+
+  border-radius: 9px;
+
+  background:
+    var(--cp-green-pale);
+
+  color:
+    var(--cp-green-dark);
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+.children-view
+.child-profile-small-action svg {
+  width: 13px;
+  height: 13px;
+}
+
+
+/* ========================================
+   NOTE CONTENT
+======================================== */
+
+.children-view
+.child-profile-note-content {
+  min-height: 90px;
+
+  padding: 14px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.055);
+
+  border-radius: 12px;
+
+  background:
+    #fafcfc;
+}
+
+
+.children-view
+.child-profile-note-content p {
+  margin: 0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   GENERIC TAB SECTION
+======================================== */
+
+.children-view
+.child-profile-section {
+  min-width: 0;
+
+  padding: 21px;
+
+  border:
+    1px solid
+    var(--cp-border);
+
+  border-radius: 18px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    var(--cp-shadow);
+}
+
+
+/* ========================================
+   SECTION HEADING
+======================================== */
+
+.children-view
+.child-profile-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 16px;
+}
+
+
+.children-view
+.child-profile-section-heading > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   SECTION EYEBROW
+======================================== */
+
+.children-view
+.child-profile-section-heading
+> div
+> span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   SECTION TITLE
+======================================== */
+
+.children-view
+.child-profile-section-heading h2 {
+  margin: 0;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 21px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   SECTION DESCRIPTION
+======================================== */
+
+.children-view
+.child-profile-section-heading p {
+  max-width: 700px;
+
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   BUTTONS INSIDE PROFILE SECTIONS
+======================================== */
+
+.children-view
+.child-profile-container
+.children-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  gap: 8px;
+
+  min-height: 43px;
+
+  padding:
+    0
+    15px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cp-navy),
+      var(--cp-navy-deep)
+    );
+
+  color:
+    #ffffff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 720;
+
+  box-shadow:
+    0 7px 18px
+    rgba(22, 50, 79, 0.12);
+
+  cursor: pointer;
+}
+
+
+.children-view
+.child-profile-container
+.children-primary-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+/* ========================================
+   TASK SUMMARY
+======================================== */
+
+.children-view
+.child-task-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 8px;
+
+  margin-bottom: 15px;
+}
+
+
+/* ========================================
+   TASK SUMMARY ITEM
+======================================== */
+
+.children-view
+.child-task-summary-item {
+  min-width: 0;
+
+  padding: 13px;
+
+  border:
+    1px solid
+    var(--cp-border);
+
+  border-radius: 12px;
+
+  background:
+    #f9fbfa;
+}
+
+
+/* ========================================
+   TASK SUMMARY LABEL
+======================================== */
+
+.children-view
+.child-task-summary-item > span {
+  display: block;
+
+  color:
+    var(--cp-text-muted);
+
+  font-size: 10px;
+  font-weight: 650;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   TASK SUMMARY NUMBER
+======================================== */
+
+.children-view
+.child-task-summary-item > strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.05em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   CHILD TASK LIST
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+
+/* ========================================
+   CHILD TASK CARD
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  min-width: 0;
+
+  padding:
+    14px
+    15px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.08);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafcfc
+    );
+
+  box-shadow:
+    0 4px 14px
+    rgba(18, 43, 59, 0.025);
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-card:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  box-shadow:
+    0 9px 23px
+    rgba(18, 43, 59, 0.05);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   COMPLETED TASK
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-card.is-completed {
+  opacity: 0.72;
+
+  background:
+    #f8faf9;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-card.is-completed
+.child-task-title-row h3 {
+  color:
+    #7b8b92;
+
+  text-decoration:
+    line-through;
+
+  text-decoration-thickness:
+    1px;
+}
+
+
+/* ========================================
+   TASK COMPLETE BUTTON
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-complete-button {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 37px;
+  height: 37px;
+
+  padding: 0;
+
+  border:
+    1.5px solid
+    #c8d4d0;
+
+  border-radius: 10px;
+
+  background:
+    #ffffff;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-complete-button:hover:not(:disabled) {
+  border-color:
+    var(--cp-green);
+
+  background:
+    var(--cp-green-pale);
+
+  transform:
+    scale(1.04);
+}
+
+
+.children-view
+.child-profile-container
+.child-task-complete-button.is-completed {
+  border-color:
+    var(--cp-green);
+
+  background:
+    var(--cp-green);
+
+  box-shadow:
+    0 6px 15px
+    rgba(79, 138, 115, 0.2);
+}
+
+
+.children-view
+.child-profile-container
+.child-task-complete-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ========================================
+   TASK MAIN
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-main {
+  min-width: 0;
+}
+
+
+/* ========================================
+   TASK TITLE ROW
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+/* ========================================
+   TASK TITLE
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-title-row h3 {
+  min-width: 0;
+
+  margin: 0;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 710;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   TASK NOTES
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-notes {
+  max-width: 760px;
+
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 10px;
+
+  line-height: 1.55;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   TASK META
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+
+/* ========================================
+   TASK META PILL
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-meta span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  padding:
+    0
+    8px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.06);
+
+  border-radius: 7px;
+
+  background:
+    #f4f7f7;
+
+  color:
+    #5d727d;
+
+  font-size: 9px;
+  font-weight: 620;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   TASK CATEGORY
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 24px;
+
+  padding:
+    0
+    8px;
+
+  border-radius: 7px;
+
+  font-size: 8px;
+  font-weight: 780;
+
+  letter-spacing:
+    0.035em;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   TASK CATEGORY COLOURS
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-category-general {
+  background:
+    #edf2f3;
+
+  color:
+    #526b75;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-category-homework {
+  background:
+    #e9f2f8;
+
+  color:
+    #4a708c;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-category-school {
+  background:
+    #eeedf8;
+
+  color:
+    #696595;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-category-chore {
+  background:
+    #e9f4ef;
+
+  color:
+    #447761;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-category-appointment {
+  background:
+    #f7efe4;
+
+  color:
+    #8f693b;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-category-reminder {
+  background:
+    #f8eaed;
+
+  color:
+    #965f68;
+}
+
+
+/* ========================================
+   TASK ACTIONS
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   TASK ACTION BUTTON
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-action-button {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.07);
+
+  border-radius: 9px;
+
+  background:
+    #f8faf9;
+
+  color:
+    #687a83;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-action-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-action-button:hover {
+  border-color:
+    rgba(79, 138, 115, 0.16);
+
+  background:
+    var(--cp-green-soft);
+
+  color:
+    var(--cp-green-dark);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   DANGER TASK ACTION
+======================================== */
+
+.children-view
+.child-profile-container
+.child-task-action-danger {
+  color:
+    #a14f4f;
+}
+
+
+.children-view
+.child-profile-container
+.child-task-action-danger:hover {
+  border-color:
+    rgba(161, 79, 79, 0.14);
+
+  background:
+    #fbeeee;
+
+  color:
+    #9a4949;
+}
+
+
+/* ========================================
+   TASKS EMPTY STATE
+======================================== */
+
+.children-view
+.child-profile-container
+.child-tasks-empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 270px;
+
+  padding:
+    32px
+    22px;
+
+  border:
+    1px dashed
+    rgba(22, 50, 79, 0.11);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fafcfc,
+      #f5f9f7
+    );
+
+  text-align: center;
+}
+
+
+/* ========================================
+   TASK EMPTY ICON
+======================================== */
+
+.children-view
+.child-profile-container
+.child-tasks-empty-icon {
+  display: grid;
+  place-items: center;
+
+  width: 54px;
+  height: 54px;
+
+  margin-bottom: 14px;
+
+  border-radius: 15px;
+
+  background:
+    var(--cp-green-soft);
+
+  color:
+    var(--cp-green-dark);
+}
+
+
+.children-view
+.child-profile-container
+.child-tasks-empty-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* ========================================
+   TASK EMPTY EYEBROW
+======================================== */
+
+.children-view
+.child-profile-container
+.child-tasks-empty > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.1em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   TASK EMPTY TITLE
+======================================== */
+
+.children-view
+.child-profile-container
+.child-tasks-empty h3 {
+  margin: 0;
+
+  color:
+    var(--cp-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 750;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height: 1.3;
+}
+
+
+/* ========================================
+   TASK EMPTY DESCRIPTION
+======================================== */
+
+.children-view
+.child-profile-container
+.child-tasks-empty p {
+  max-width: 470px;
+
+  margin:
+    7px
+    0
+    17px;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   LARGE NOTE TAB
+======================================== */
+
+.children-view
+.child-profile-large-note {
+  min-height: 170px;
+
+  padding: 17px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.06);
+
+  border-radius: 14px;
+
+  background:
+    #fafcfc;
+}
+
+
+/* ========================================
+   LARGE NOTE LABEL
+======================================== */
+
+.children-view
+.child-profile-large-note-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    var(--cp-green-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.1em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+.children-view
+.child-profile-large-note p {
+  margin: 0;
+
+  color:
+    var(--cp-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.75;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   EDIT NOTES BUTTON
+======================================== */
+
+.children-view
+.child-profile-edit-notes-button {
+  min-height: 42px !important;
+
+  padding:
+    0
+    14px !important;
+}
+
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1500px) {
+
+  .children-view
+  .child-profile-hero {
+    padding:
+      28px
+      30px;
+  }
+
+
+  .children-view
+  .child-profile-identity h1 {
+    font-size: 46px;
+  }
+
+
+  .children-view
+  .child-profile-panel,
+  .children-view
+  .child-profile-section {
+    padding: 21px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1250px) {
+
+  .children-view
+  .child-profile-hero {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr)
+      minmax(190px, 0.45fr);
+
+    gap: 18px;
+  }
+
+
+  .children-view
+  .child-profile-identity h1 {
+    font-size: 39px;
+  }
+
+
+  .children-view
+  .child-profile-metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 950px) {
+
+  .children-view
+  .child-profile-hero {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+  }
+
+
+  .children-view
+  .child-profile-hero-message {
+    grid-column:
+      1 / -1;
+  }
+
+
+  .children-view
+  .child-profile-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .children-view
+  .child-profile-notes-panel {
+    grid-column: auto;
+  }
+
+
+  .children-view
+  .child-profile-tabs {
+    display: flex;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+
+  .children-view
+  .child-profile-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .children-view
+  .child-profile-tab {
+    flex-shrink: 0;
+
+    min-width: 105px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+  .children-view
+  .child-profile-hero {
+    padding:
+      21px
+      20px;
+  }
+
+
+  .children-view
+  .child-profile-avatar {
+    width: 68px;
+    height: 68px;
+
+    border-radius: 19px;
+
+    font-size: 24px;
+  }
+
+
+  .children-view
+  .child-profile-identity h1 {
+    font-size: 36px;
+  }
+
+
+  .children-view
+  .child-profile-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 11px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 620px) {
+
+  .children-view
+  .child-profile-view {
+    padding-bottom: 92px;
+  }
+
+
+  /* TOP BAR */
+
+  .children-view
+  .child-profile-topbar {
+    margin-bottom: 11px;
+  }
+
+
+  .children-view
+  .child-profile-back-button {
+    min-height: 42px;
+
+    padding:
+      0
+      11px;
+
+    font-size: 10px;
+  }
+
+
+  .children-view
+  .child-profile-back-button
+  > span:not(.child-profile-back-arrow) {
+    display: none;
+  }
+
+
+  .children-view
+  .child-profile-edit-button {
+    min-height: 42px;
+
+    padding:
+      0
+      12px;
+
+    font-size: 10px;
+  }
+
+
+  /* HERO */
+
+  .children-view
+  .child-profile-hero {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 13px;
+
+    margin-bottom: 9px;
+
+    padding:
+      17px
+      15px;
+
+    border-radius: 17px;
+  }
+
+
+  .children-view
+  .child-profile-avatar {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 16px;
+
+    font-size: 20px;
+  }
+
+
+  .children-view
+  .child-profile-eyebrow {
+    margin-bottom: 4px;
+
+    font-size: 8px;
+  }
+
+
+  .children-view
+  .child-profile-identity h1 {
+    font-size: 29px;
+
+    line-height: 1.05;
+  }
+
+
+  .children-view
+  .child-profile-identity > p {
+    margin-top: 5px;
+
+    font-size: 10px;
+  }
+
+
+  .children-view
+  .child-profile-hero-message {
+    grid-column:
+      1 / -1;
+
+    padding:
+      11px
+      12px;
+
+    border-radius: 11px;
+  }
+
+
+  .children-view
+  .child-profile-hero-message > span {
+    font-size: 8px;
+  }
+
+
+  .children-view
+  .child-profile-hero-message > p {
+    font-size: 10px;
+  }
+
+
+  /* METRICS */
+
+  .children-view
+  .child-profile-metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 7px;
+
+    margin-bottom: 9px;
+  }
+
+
+  .children-view
+  .child-profile-metric {
+    min-height: 104px;
+
+    padding: 13px;
+
+    border-radius: 13px;
+  }
+
+
+  .children-view
+  .child-profile-metric > span {
+    font-size: 10px;
+  }
+
+
+  .children-view
+  .child-profile-metric > strong {
+    font-size: 25px;
+  }
+
+
+  .children-view
+  .child-profile-metric > small {
+    font-size: 9px;
+  }
+
+
+  /* TABS */
+
+  .children-view
+  .child-profile-tabs {
+    gap: 3px;
+
+    margin-bottom: 9px;
+
+    padding: 4px;
+
+    border-radius: 12px;
+  }
+
+
+  .children-view
+  .child-profile-tab {
+    min-width: auto;
+    min-height: 38px;
+
+    padding:
+      0
+      12px;
+
+    font-size: 10px;
+  }
+
+
+  /* OVERVIEW PANELS */
+
+  .children-view
+  .child-profile-overview-grid {
+    gap: 9px;
+  }
+
+
+  .children-view
+  .child-profile-panel {
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+
+
+  .children-view
+  .child-profile-panel-header {
+    margin-bottom: 11px;
+  }
+
+
+  .children-view
+  .child-profile-panel-header
+  > div
+  > span {
+    font-size: 8px;
+  }
+
+
+  .children-view
+  .child-profile-panel-header h3 {
+    font-size: 17px;
+  }
+
+
+  /* EMPTY PANEL */
+
+  .children-view
+  .child-profile-empty-panel {
+    gap: 10px;
+
+    min-height: 98px;
+
+    padding: 12px;
+  }
+
+
+  .children-view
+  .child-profile-empty-icon {
+    width: 41px;
+    height: 41px;
+  }
+
+
+  .children-view
+  .child-profile-empty-copy h3 {
+    font-size: 12px;
+  }
+
+
+  .children-view
+  .child-profile-empty-copy p {
+    font-size: 9px;
+  }
+
+
+  /* NOTES */
+
+  .children-view
+  .child-profile-note-content {
+    min-height: 75px;
+
+    padding: 12px;
+  }
+
+
+  .children-view
+  .child-profile-note-content p {
+    font-size: 10px;
+  }
+
+
+  /* SECTIONS */
+
+  .children-view
+  .child-profile-section {
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+
+
+  .children-view
+  .child-profile-section-heading {
+    gap: 10px;
+
+    margin-bottom: 13px;
+  }
+
+
+  .children-view
+  .child-profile-section-heading
+  > div
+  > span {
+    font-size: 8px;
+  }
+
+
+  .children-view
+  .child-profile-section-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .children-view
+  .child-profile-section-heading p {
+    font-size: 10px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .children-primary-button {
+    width: 100%;
+    min-height: 44px;
+
+    font-size: 10px;
+  }
+
+
+  /* TASK SUMMARY */
+
+  .children-view
+  .child-task-summary {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 6px;
+  }
+
+
+  .children-view
+  .child-task-summary-item {
+    padding: 11px;
+
+    border-radius: 10px;
+  }
+
+
+  .children-view
+  .child-task-summary-item > span {
+    font-size: 9px;
+  }
+
+
+  .children-view
+  .child-task-summary-item > strong {
+    font-size: 21px;
+  }
+
+
+  /* TASK CARD */
+
+  .children-view
+  .child-profile-container
+  .child-task-card {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-card:hover {
+    transform: none;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-complete-button {
+    width: 35px;
+    height: 35px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-title-row h3 {
+    font-size: 13px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-notes {
+    font-size: 10px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-category {
+    min-height: 23px;
+
+    font-size: 7px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-meta span {
+    min-height: 24px;
+
+    font-size: 8px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-task-actions {
+    grid-column:
+      1 / -1;
+
+    justify-content: flex-end;
+  }
+
+
+  /* LARGE NOTE */
+
+  .children-view
+  .child-profile-large-note {
+    min-height: 145px;
+
+    padding: 14px;
+  }
+
+
+  .children-view
+  .child-profile-large-note p {
+    font-size: 11px;
+  }
+
+
+  /* EMPTY TASKS */
+
+  .children-view
+  .child-profile-container
+  .child-tasks-empty {
+    min-height: 240px;
+
+    padding:
+      27px
+      17px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-tasks-empty h3 {
+    font-size: 17px;
+  }
+
+
+  .children-view
+  .child-profile-container
+  .child-tasks-empty p {
+    font-size: 10px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .children-view
+  .child-profile-hero {
+    gap: 11px;
+
+    padding:
+      15px
+      12px;
+  }
+
+
+  .children-view
+  .child-profile-avatar {
+    width: 53px;
+    height: 53px;
+
+    font-size: 18px;
+  }
+
+
+  .children-view
+  .child-profile-identity h1 {
+    font-size: 27px;
+  }
+
+
+  .children-view
+  .child-profile-metric {
+    min-height: 98px;
+
+    padding: 11px;
+  }
+
+
+  .children-view
+  .child-profile-metric > strong {
+    font-size: 23px;
+  }
+
+
+  .children-view
+  .child-profile-panel,
+  .children-view
+  .child-profile-section {
+    padding: 13px;
+  }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+@media (hover: none) {
+
+  .children-view
+  .child-profile-back-button:hover,
+
+  .children-view
+  .child-profile-edit-button:hover,
+
+  .children-view
+  .child-profile-metric:hover,
+
+  .children-view
+  .child-profile-container
+  .child-task-card:hover,
+
+  .children-view
+  .child-profile-container
+  .child-task-complete-button:hover,
+
+  .children-view
+  .child-profile-container
+  .child-task-action-button:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ========================================
+   ACCESSIBLE FOCUS STATES
+======================================== */
+
+.children-view
+.child-profile-container
+button:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 138, 115, 0.25);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .children-view
+  .child-profile-view,
+
+  .children-view
+  .child-profile-tab-content {
+    animation: none;
+  }
+
+
+  .children-view
+  .child-profile-back-button,
+
+  .children-view
+  .child-profile-edit-button,
+
+  .children-view
+  .child-profile-metric,
+
+  .children-view
+  .child-profile-tab,
+
+  .children-view
+  .child-profile-container
+  .child-task-card,
+
+  .children-view
+  .child-profile-container
+  .child-task-complete-button,
+
+  .children-view
+  .child-profile-container
+  .child-task-action-button {
+    transition: none;
+  }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .child-profile-container
+  .child-profile-view,
+
+  .child-profile-container
+  .child-profile-tab-content {
+    animation: none;
+  }
+
+
+  .child-profile-container
+  .child-profile-back-button,
+
+  .child-profile-container
+  .child-profile-edit-button,
+
+  .child-profile-container
+  .child-profile-metric,
+
+  .child-profile-container
+  .child-profile-tab,
+
+  .child-profile-container
+  .child-task-card,
+
+  .child-profile-container
+  .child-task-complete-button,
+
+  .child-profile-container
+  .child-task-action-button {
+    transition: none;
+  }
+
+}

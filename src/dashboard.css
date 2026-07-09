@@ -1,0 +1,3352 @@
+/* ========================================
+   FAMILYFLOW
+   COMPLETE PREMIUM DASHBOARD REDESIGN
+
+   This file styles only the main Dashboard.
+   Sidebar, app header and other pages remain
+   untouched.
+======================================== */
+
+
+/* ========================================
+   DASHBOARD DESIGN TOKENS
+======================================== */
+
+.dashboard-redesign {
+
+  --dash-navy:
+    #16324f;
+
+  --dash-navy-deep:
+    #102a43;
+
+  --dash-navy-soft:
+    #244863;
+
+  --dash-green:
+    #4f8a73;
+
+  --dash-green-dark:
+    #39705c;
+
+  --dash-green-light:
+    #e9f4ef;
+
+  --dash-green-pale:
+    #f3f8f6;
+
+  --dash-blue-light:
+    #eaf4f9;
+
+  --dash-blue:
+    #4f7d96;
+
+  --dash-gold-light:
+    #f8f0e3;
+
+  --dash-gold:
+    #a2763f;
+
+  --dash-purple-light:
+    #f0eff9;
+
+  --dash-purple:
+    #716ca1;
+
+  --dash-rose-light:
+    #f9eaed;
+
+  --dash-rose:
+    #9a606a;
+
+  --dash-text:
+    #172c3c;
+
+  --dash-text-secondary:
+    #516874;
+
+  --dash-text-muted:
+    #70828c;
+
+  --dash-border:
+    rgba(22, 50, 79, 0.08);
+
+  --dash-border-medium:
+    rgba(22, 50, 79, 0.13);
+
+  --dash-surface:
+    #ffffff;
+
+  --dash-surface-soft:
+    #f8faf9;
+
+  --dash-shadow:
+    0 12px 38px
+    rgba(18, 43, 59, 0.05);
+
+  --dash-shadow-hover:
+    0 18px 46px
+    rgba(18, 43, 59, 0.085);
+
+}
+
+
+/* ========================================
+   DASHBOARD ROOT
+======================================== */
+
+.dashboard-redesign {
+  width: 100%;
+  min-width: 0;
+
+  padding-bottom: 46px;
+}
+
+
+/* ========================================
+   DASHBOARD HERO
+======================================== */
+
+.dashboard-redesign
+.dashboard-hero {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: end;
+
+  gap: 30px;
+
+  min-width: 0;
+
+  margin-bottom: 31px;
+
+  padding:
+    34px
+    38px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.1);
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fbfa 55%,
+      #eef6f2 100%
+    );
+
+  box-shadow:
+    0 14px 42px
+    rgba(18, 43, 59, 0.045);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   HERO DECORATION
+======================================== */
+
+.dashboard-redesign
+.dashboard-hero-decoration {
+  position: absolute;
+
+  top: -135px;
+  right: -50px;
+
+  width: 350px;
+  height: 350px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.08);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.dashboard-redesign
+.dashboard-hero-decoration::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 57px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.065);
+
+  border-radius: 50%;
+}
+
+
+.dashboard-redesign
+.dashboard-hero-decoration::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 112px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(79, 138, 115, 0.045);
+}
+
+
+/* ========================================
+   HERO CONTENT
+======================================== */
+
+.dashboard-redesign
+.dashboard-hero-content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   HERO DATE
+======================================== */
+
+.dashboard-redesign
+.dashboard-date {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color:
+    var(--dash-green-dark);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.13em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   HERO TITLE
+======================================== */
+
+.dashboard-redesign
+.dashboard-title {
+  max-width: 850px;
+
+  margin: 0;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size:
+    clamp(
+      40px,
+      4.4vw,
+      59px
+    );
+
+  font-weight: 780;
+
+  letter-spacing:
+    -0.06em;
+
+  line-height: 1.02;
+}
+
+
+/* ========================================
+   HERO SUBTITLE
+======================================== */
+
+.dashboard-redesign
+.dashboard-subtitle {
+  max-width: 720px;
+
+  margin:
+    14px
+    0
+    0;
+
+  color:
+    var(--dash-text-secondary);
+
+  font-size: 14px;
+  font-weight: 450;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   HERO ACTION
+======================================== */
+
+.dashboard-redesign
+.dashboard-hero-action {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  padding-bottom: 2px;
+}
+
+
+/* ========================================
+   QUICK ADD BUTTON
+======================================== */
+
+.dashboard-redesign
+.quick-add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  gap: 9px;
+
+  min-height: 50px;
+
+  padding:
+    0
+    20px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.18);
+
+  border-radius: 14px;
+
+  background:
+    #ffffff;
+
+  color:
+    var(--dash-green-dark);
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 9px 25px
+    rgba(49, 100, 81, 0.08);
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.dashboard-redesign
+.quick-add-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+.dashboard-redesign
+.quick-add-button:hover {
+  border-color:
+    rgba(79, 138, 115, 0.3);
+
+  background:
+    var(--dash-green-pale);
+
+  box-shadow:
+    0 13px 30px
+    rgba(49, 100, 81, 0.13);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* ========================================
+   FAMILY PULSE SECTION
+======================================== */
+
+.dashboard-redesign
+.dashboard-pulse-section {
+  min-width: 0;
+
+  margin-bottom: 20px;
+}
+
+
+/* ========================================
+   FAMILY PULSE HEADER
+======================================== */
+
+.dashboard-redesign
+.dashboard-pulse-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 16px;
+
+  padding:
+    0
+    3px;
+}
+
+
+.dashboard-redesign
+.dashboard-pulse-header > div {
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.dashboard-section-eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--dash-green-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+.dashboard-redesign
+.dashboard-pulse-header h2 {
+  margin: 0;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 22px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+.dashboard-redesign
+.dashboard-pulse-header > p {
+  max-width: 390px;
+
+  margin: 0;
+
+  color:
+    var(--dash-text-muted);
+
+  font-size: 12px;
+  line-height: 1.55;
+
+  text-align: right;
+}
+
+
+/* ========================================
+   SUMMARY GRID
+======================================== */
+
+.dashboard-redesign
+.dashboard-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 13px;
+}
+
+
+/* ========================================
+   STAT CARD
+======================================== */
+
+.dashboard-redesign
+.dashboard-stat-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+  min-height: 126px;
+
+  padding:
+    18px
+    17px;
+
+  border:
+    1px solid
+    var(--dash-border);
+
+  border-radius: 18px;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 9px 29px
+    rgba(18, 43, 59, 0.04);
+
+  overflow: hidden;
+
+  transition:
+    border-color 170ms ease,
+    box-shadow 170ms ease,
+    transform 170ms ease;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-card::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 18px;
+  right: 18px;
+
+  height: 3px;
+
+  border-radius:
+    0
+    0
+    999px
+    999px;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-today::before {
+  background:
+    #6ea4be;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-upcoming::before {
+  background:
+    #c29a62;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-children::before {
+  background:
+    #6a9c86;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-tomorrow::before {
+  background:
+    #8984b5;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-card:hover {
+  border-color:
+    var(--dash-border-medium);
+
+  box-shadow:
+    var(--dash-shadow-hover);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* ========================================
+   STAT ICON
+======================================== */
+
+.dashboard-redesign
+.summary-card-icon {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 49px;
+  height: 49px;
+
+  border-radius: 14px;
+}
+
+
+.dashboard-redesign
+.summary-card-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+.dashboard-redesign
+.summary-icon-today {
+  background:
+    var(--dash-blue-light);
+
+  color:
+    var(--dash-blue);
+}
+
+
+.dashboard-redesign
+.summary-icon-upcoming {
+  background:
+    var(--dash-gold-light);
+
+  color:
+    var(--dash-gold);
+}
+
+
+.dashboard-redesign
+.summary-icon-children {
+  background:
+    var(--dash-green-light);
+
+  color:
+    var(--dash-green-dark);
+}
+
+
+.dashboard-redesign
+.summary-icon-tomorrow {
+  background:
+    var(--dash-purple-light);
+
+  color:
+    var(--dash-purple);
+}
+
+
+/* ========================================
+   STAT CONTENT
+======================================== */
+
+.dashboard-redesign
+.summary-card-content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.summary-card-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--dash-text-secondary);
+
+  font-size: 11px;
+  font-weight: 680;
+
+  line-height: 1.3;
+}
+
+
+.dashboard-redesign
+.summary-card-value {
+  display: block;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height: 1;
+}
+
+
+.dashboard-redesign
+.summary-card-detail {
+  display: block;
+
+  margin-top: 7px;
+
+  overflow: hidden;
+
+  color:
+    var(--dash-text-muted);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   STAT ARROW
+======================================== */
+
+.dashboard-redesign
+.dashboard-stat-arrow {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 29px;
+  height: 29px;
+
+  border-radius: 9px;
+
+  color:
+    #94a0a5;
+}
+
+
+.dashboard-redesign
+.dashboard-stat-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ========================================
+   MAIN WORKSPACE GRID
+======================================== */
+
+.dashboard-redesign
+.dashboard-workspace-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(350px, 0.85fr);
+
+  align-items: stretch;
+
+  gap: 18px;
+
+  margin-top: 20px;
+}
+
+
+/* ========================================
+   GENERIC DASHBOARD PANEL
+======================================== */
+
+.dashboard-redesign
+.dashboard-panel {
+  position: relative;
+
+  min-width: 0;
+
+  border:
+    1px solid
+    var(--dash-border);
+
+  border-radius: 21px;
+
+  background:
+    var(--dash-surface);
+
+  box-shadow:
+    var(--dash-shadow);
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   TODAY FOCUS PANEL
+======================================== */
+
+.dashboard-redesign
+.dashboard-focus-panel {
+  min-height: 540px;
+
+  padding: 27px;
+}
+
+
+/* ========================================
+   TODAY FOCUS HEADER
+======================================== */
+
+.dashboard-redesign
+.dashboard-focus-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 22px;
+}
+
+
+/* ========================================
+   TODAY FOCUS HEADING
+======================================== */
+
+.dashboard-redesign
+.dashboard-focus-heading {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: flex-start;
+
+  gap: 15px;
+
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.dashboard-focus-icon {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 15px;
+
+  background:
+    var(--dash-blue-light);
+
+  color:
+    var(--dash-blue);
+}
+
+
+.dashboard-redesign
+.dashboard-focus-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+.dashboard-redesign
+.dashboard-focus-heading > div {
+  min-width: 0;
+}
+
+
+/* ========================================
+   PANEL EYEBROW
+======================================== */
+
+.dashboard-redesign
+.panel-eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--dash-green-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   MAIN PANEL TITLES
+======================================== */
+
+.dashboard-redesign
+.dashboard-focus-heading h2,
+.dashboard-redesign
+.dashboard-panel-header h2,
+.dashboard-redesign
+.dashboard-tomorrow-top h2,
+.dashboard-redesign
+.dashboard-upcoming-heading h2 {
+  margin: 0;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 21px;
+  font-weight: 760;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   TODAY FOCUS DESCRIPTION
+======================================== */
+
+.dashboard-redesign
+.dashboard-focus-heading p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--dash-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.55;
+}
+
+
+/* ========================================
+   PANEL LINK BUTTON
+======================================== */
+
+.dashboard-redesign
+.panel-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding:
+    0
+    11px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color:
+    var(--dash-green-dark);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 720;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.dashboard-redesign
+.panel-link-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+.dashboard-redesign
+.panel-link-button:hover {
+  background:
+    var(--dash-green-light);
+
+  transform:
+    translateX(2px);
+}
+
+
+/* ========================================
+   TODAY FOCUS LIST
+======================================== */
+
+.dashboard-redesign
+.dashboard-focus-list {
+  min-width: 0;
+}
+
+
+/* ========================================
+   TASK LIST
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+/* ========================================
+   TASK CARD
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  min-width: 0;
+
+  padding:
+    15px
+    16px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.08);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafcfc
+    );
+
+  box-shadow:
+    0 4px 15px
+    rgba(18, 43, 59, 0.025);
+
+  overflow: hidden;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.dashboard-redesign
+.dashboard-task-card:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  box-shadow:
+    0 10px 25px
+    rgba(18, 43, 59, 0.055);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.dashboard-redesign
+.dashboard-task-card.is-clickable {
+  cursor: pointer;
+}
+
+
+/* ========================================
+   TASK COMPLETION BUTTON
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-complete-button {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  border:
+    1.5px solid
+    #c8d4d0;
+
+  border-radius: 11px;
+
+  background:
+    #ffffff;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-complete-button:hover:not(:disabled) {
+  border-color:
+    var(--dash-green);
+
+  background:
+    var(--dash-green-pale);
+
+  transform:
+    scale(1.04);
+}
+
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-complete-button.is-completed {
+  border-color:
+    var(--dash-green);
+
+  background:
+    var(--dash-green);
+
+  box-shadow:
+    0 6px 15px
+    rgba(79, 138, 115, 0.2);
+}
+
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-complete-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ========================================
+   TASK MAIN
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-main {
+  min-width: 0;
+}
+
+
+/* ========================================
+   TASK TITLE ROW
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   TASK TITLE
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-title-row h3 {
+  min-width: 0;
+
+  margin: 0;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 14px;
+  font-weight: 710;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   TASK CATEGORY
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-height: 25px;
+
+  padding:
+    0
+    9px;
+
+  border-radius: 8px;
+
+  font-size: 8px;
+  font-weight: 780;
+
+  letter-spacing:
+    0.035em;
+
+  line-height: 1;
+
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+
+.dashboard-redesign
+.child-task-category-general {
+  background:
+    #edf2f3;
+
+  color:
+    #526b75;
+}
+
+
+.dashboard-redesign
+.child-task-category-homework {
+  background:
+    #e9f2f8;
+
+  color:
+    #4a708c;
+}
+
+
+.dashboard-redesign
+.child-task-category-school {
+  background:
+    #eeedf8;
+
+  color:
+    #696595;
+}
+
+
+.dashboard-redesign
+.child-task-category-chore {
+  background:
+    #e9f4ef;
+
+  color:
+    #447761;
+}
+
+
+.dashboard-redesign
+.child-task-category-appointment {
+  background:
+    #f7efe4;
+
+  color:
+    #8f693b;
+}
+
+
+.dashboard-redesign
+.child-task-category-reminder {
+  background:
+    #f8eaed;
+
+  color:
+    #965f68;
+}
+
+
+/* ========================================
+   TASK META
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+
+.dashboard-redesign
+.dashboard-task-card
+.child-task-meta span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 26px;
+
+  padding:
+    0
+    9px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.06);
+
+  border-radius: 8px;
+
+  background:
+    #f4f7f7;
+
+  color:
+    #5c727c;
+
+  font-size: 9px;
+  font-weight: 620;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   COMPLETED TASK
+======================================== */
+
+.dashboard-redesign
+.dashboard-task-card.is-completed {
+  opacity: 0.72;
+
+  background:
+    #f8faf9;
+}
+
+
+.dashboard-redesign
+.dashboard-task-card.is-completed
+.child-task-title-row h3 {
+  color:
+    #7b8b92;
+
+  text-decoration:
+    line-through;
+
+  text-decoration-thickness:
+    1px;
+}
+
+
+/* ========================================
+   RIGHT-SIDE STACK
+======================================== */
+
+.dashboard-redesign
+.dashboard-side-stack {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   TOMORROW FEATURE PANEL
+======================================== */
+
+.dashboard-redesign
+.dashboard-tomorrow-feature {
+  position: relative;
+
+  min-height: 300px;
+
+  padding: 24px;
+
+  border-color:
+    rgba(255, 255, 255, 0.08);
+
+  background:
+    linear-gradient(
+      145deg,
+      #183f5c 0%,
+      #133751 58%,
+      #102f48 100%
+    );
+
+  box-shadow:
+    0 18px 45px
+    rgba(15, 48, 72, 0.18);
+
+  color:
+    #ffffff;
+}
+
+
+/* ========================================
+   TOMORROW DECORATION
+======================================== */
+
+.dashboard-redesign
+.tomorrow-panel-decoration {
+  position: absolute;
+
+  top: -75px;
+  right: -60px;
+
+  width: 235px;
+  height: 235px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.dashboard-redesign
+.tomorrow-panel-decoration::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 38px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+
+  border-radius: 50%;
+}
+
+
+/* ========================================
+   TOMORROW TOP
+======================================== */
+
+.dashboard-redesign
+.dashboard-tomorrow-top {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   TOMORROW ICON
+======================================== */
+
+.dashboard-redesign
+.dashboard-tomorrow-icon {
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  color:
+    #9dd7c3;
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+.dashboard-redesign
+.dashboard-tomorrow-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+.dashboard-redesign
+.dashboard-tomorrow-top
+.panel-eyebrow {
+  color:
+    #92cfba;
+}
+
+
+.dashboard-redesign
+.dashboard-tomorrow-top h2 {
+  color:
+    #ffffff;
+}
+
+
+/* ========================================
+   TOMORROW DESCRIPTION
+======================================== */
+
+.dashboard-redesign
+.tomorrow-panel-description {
+  position: relative;
+  z-index: 2;
+
+  margin:
+    16px
+    0
+    15px;
+
+  color:
+    #c8d8df;
+
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   TOMORROW PREVIEW
+======================================== */
+
+.dashboard-redesign
+.dashboard-tomorrow-preview {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 13px;
+}
+
+
+/* ========================================
+   TOMORROW TASK CARD OVERRIDES
+======================================== */
+
+.dashboard-redesign
+.dashboard-tomorrow-feature
+.dashboard-task-card {
+  border-color:
+    rgba(255, 255, 255, 0.1);
+
+  background:
+    rgba(255, 255, 255, 0.98);
+
+  box-shadow:
+    0 8px 22px
+    rgba(5, 24, 37, 0.17);
+}
+
+
+.dashboard-redesign
+.dashboard-tomorrow-feature
+.dashboard-task-card:hover {
+  border-color:
+    rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 12px 27px
+    rgba(5, 24, 37, 0.22);
+}
+
+
+/* ========================================
+   TOMORROW CHECKLIST BUTTON
+======================================== */
+
+.dashboard-redesign
+.tomorrow-panel-button {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  width: 100%;
+  min-height: 48px;
+
+  margin-top: 13px;
+
+  padding:
+    0
+    15px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  color:
+    #ffffff;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  backdrop-filter:
+    blur(8px);
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+
+.dashboard-redesign
+.tomorrow-panel-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+.dashboard-redesign
+.tomorrow-panel-button:hover {
+  border-color:
+    rgba(255, 255, 255, 0.22);
+
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   FAMILY PANEL
+======================================== */
+
+.dashboard-redesign
+.dashboard-family-panel {
+  flex: 1;
+
+  min-height: 255px;
+
+  padding: 23px;
+}
+
+
+/* ========================================
+   GENERIC PANEL HEADER
+======================================== */
+
+.dashboard-redesign
+.dashboard-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-bottom: 16px;
+}
+
+
+/* ========================================
+   CHILD LIST
+======================================== */
+
+.dashboard-redesign
+.dashboard-child-preview-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+/* ========================================
+   CHILD PREVIEW
+======================================== */
+
+.dashboard-redesign
+.dashboard-child-preview {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 12px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.075);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafcfc
+    );
+
+  color:
+    var(--dash-text);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.dashboard-redesign
+.dashboard-child-preview:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 8px 20px
+    rgba(18, 43, 59, 0.045);
+
+  transform:
+    translateX(2px);
+}
+
+
+/* ========================================
+   CHILD AVATAR
+======================================== */
+
+.dashboard-redesign
+.dashboard-child-avatar {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 43px;
+  height: 43px;
+
+  border-radius: 12px;
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+.dashboard-redesign
+.dashboard-child-avatar-green {
+  background:
+    #e7f3ee;
+
+  color:
+    #3f7a64;
+}
+
+
+.dashboard-redesign
+.dashboard-child-avatar-blue {
+  background:
+    #e8f1f6;
+
+  color:
+    #4d7690;
+}
+
+
+.dashboard-redesign
+.dashboard-child-avatar-purple {
+  background:
+    #eeedf6;
+
+  color:
+    #716d9c;
+}
+
+
+.dashboard-redesign
+.dashboard-child-avatar-orange {
+  background:
+    #f6eee3;
+
+  color:
+    #9c7543;
+}
+
+
+.dashboard-redesign
+.dashboard-child-avatar-rose {
+  background:
+    #f8eaec;
+
+  color:
+    #9d626a;
+}
+
+
+/* ========================================
+   CHILD DETAILS
+======================================== */
+
+.dashboard-redesign
+.dashboard-child-details {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.dashboard-child-details strong {
+  overflow: hidden;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 720;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.35;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.dashboard-redesign
+.dashboard-child-details small {
+  margin-top: 4px;
+
+  overflow: hidden;
+
+  color:
+    var(--dash-text-muted);
+
+  font-size: 9px;
+  font-weight: 520;
+
+  line-height: 1.35;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   CHILD ARROW
+======================================== */
+
+.dashboard-redesign
+.dashboard-child-arrow {
+  display: grid;
+  place-items: center;
+
+  width: 31px;
+  height: 31px;
+
+  border-radius: 9px;
+
+  color:
+    #7e8e95;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.dashboard-redesign
+.dashboard-child-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+.dashboard-redesign
+.dashboard-child-preview:hover
+.dashboard-child-arrow {
+  background:
+    var(--dash-green-light);
+
+  color:
+    var(--dash-green-dark);
+
+  transform:
+    translateX(2px);
+}
+
+
+/* ========================================
+   MORE BUTTON
+======================================== */
+
+.dashboard-redesign
+.dashboard-more-children-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 40px;
+
+  margin-top: 9px;
+
+  padding:
+    0
+    13px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.08);
+
+  border-radius: 10px;
+
+  background:
+    #f8faf9;
+
+  color:
+    var(--dash-green-dark);
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+
+.dashboard-redesign
+.dashboard-more-children-button:hover {
+  border-color:
+    rgba(79, 138, 115, 0.18);
+
+  background:
+    var(--dash-green-light);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   UPCOMING FEATURE
+======================================== */
+
+.dashboard-redesign
+.dashboard-upcoming-feature {
+  margin-top: 18px;
+
+  padding: 26px;
+}
+
+
+/* ========================================
+   UPCOMING HEADER
+======================================== */
+
+.dashboard-redesign
+.dashboard-upcoming-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 20px;
+}
+
+
+/* ========================================
+   UPCOMING HEADING
+======================================== */
+
+.dashboard-redesign
+.dashboard-upcoming-heading {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   UPCOMING DATE
+======================================== */
+
+.dashboard-redesign
+.dashboard-upcoming-date {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 59px;
+  height: 59px;
+
+  border-radius: 15px;
+
+  background:
+    var(--dash-gold-light);
+
+  color:
+    var(--dash-gold);
+}
+
+
+.dashboard-redesign
+.dashboard-upcoming-date strong {
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 21px;
+  font-weight: 800;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height: 1;
+}
+
+
+.dashboard-redesign
+.dashboard-upcoming-date span {
+  margin-top: 4px;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+
+.dashboard-redesign
+.dashboard-upcoming-heading > div {
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.dashboard-upcoming-heading p {
+  margin:
+    6px
+    0
+    0;
+
+  color:
+    var(--dash-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+/* ========================================
+   UPCOMING CONTENT
+======================================== */
+
+.dashboard-redesign
+.dashboard-upcoming-content {
+  min-width: 0;
+}
+
+
+/* ========================================
+   UPCOMING EMPTY STATE
+======================================== */
+
+.dashboard-redesign
+.upcoming-empty-state {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 116px;
+
+  padding: 18px;
+
+  border:
+    1px solid
+    rgba(22, 50, 79, 0.07);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fafcfc,
+      #f6f9f8
+    );
+}
+
+
+/* Hide duplicated date block in the empty
+   state because the redesigned panel already
+   has its own date badge in the header. */
+
+.dashboard-redesign
+.dashboard-upcoming-feature
+.upcoming-empty-state
+.upcoming-date-box {
+  display: none;
+}
+
+
+.dashboard-redesign
+.upcoming-empty-state > div {
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.upcoming-empty-state
+> div
+> strong {
+  display: block;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 14px;
+  font-weight: 730;
+
+  line-height: 1.35;
+}
+
+
+.dashboard-redesign
+.upcoming-empty-state p {
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--dash-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   GENERAL DASHBOARD EMPTY STATE
+======================================== */
+
+.dashboard-redesign
+.dashboard-empty-state {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 125px;
+
+  padding: 18px;
+
+  border:
+    1px dashed
+    rgba(22, 50, 79, 0.13);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fafcfc,
+      #f5f9f7
+    );
+}
+
+
+.dashboard-redesign
+.dashboard-empty-state.compact {
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+}
+
+
+/* ========================================
+   EMPTY STATE ICON
+======================================== */
+
+.dashboard-redesign
+.empty-state-icon {
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 49px;
+  height: 49px;
+
+  border-radius: 14px;
+
+  background:
+    var(--dash-green-light);
+
+  color:
+    var(--dash-green-dark);
+}
+
+
+.dashboard-redesign
+.empty-state-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* ========================================
+   EMPTY STATE COPY
+======================================== */
+
+.dashboard-redesign
+.dashboard-empty-state
+> div:not(.empty-state-icon) {
+  min-width: 0;
+}
+
+
+.dashboard-redesign
+.dashboard-empty-state
+> div
+> strong {
+  display: block;
+
+  color:
+    var(--dash-text);
+
+  font-family:
+    'Manrope',
+    sans-serif;
+
+  font-size: 14px;
+  font-weight: 730;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.35;
+}
+
+
+.dashboard-redesign
+.dashboard-empty-state p {
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--dash-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   EMPTY STATE ACTION
+======================================== */
+
+.dashboard-redesign
+.empty-state-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+
+  padding:
+    0
+    13px;
+
+  border:
+    1px solid
+    rgba(79, 138, 115, 0.16);
+
+  border-radius: 10px;
+
+  background:
+    #ffffff;
+
+  color:
+    var(--dash-green-dark);
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 720;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+
+.dashboard-redesign
+.empty-state-action:hover {
+  border-color:
+    rgba(79, 138, 115, 0.28);
+
+  background:
+    var(--dash-green-light);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1500px) {
+
+  .dashboard-redesign
+  .dashboard-hero {
+    padding:
+      38px
+      42px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-title {
+    font-size: 58px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-stat-card {
+    min-height: 134px;
+
+    padding:
+      20px
+      19px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-panel {
+    padding: 30px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-family-panel,
+  .dashboard-redesign
+  .dashboard-tomorrow-feature {
+    padding: 26px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-upcoming-feature {
+    padding: 29px;
+  }
+
+}
+
+
+/* ========================================
+   WIDE TABLET / SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1280px) {
+
+  .dashboard-redesign
+  .dashboard-hero {
+    padding:
+      30px
+      32px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-title {
+    font-size: 44px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-summary-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .dashboard-redesign
+  .dashboard-stat-card {
+    min-height: 118px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-workspace-grid {
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(320px, 0.85fr);
+  }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+
+  .dashboard-redesign
+  .dashboard-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-panel {
+    min-height: auto;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-side-stack {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .dashboard-redesign
+  .dashboard-tomorrow-feature,
+  .dashboard-redesign
+  .dashboard-family-panel {
+    min-height: 320px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+  .dashboard-redesign
+  .dashboard-hero {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+    padding:
+      27px
+      25px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-hero-action {
+    justify-content: flex-start;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-title {
+    font-size: 39px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-pulse-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-pulse-header > p {
+    max-width: none;
+
+    text-align: left;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-side-stack {
+    grid-template-columns: 1fr;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-tomorrow-feature,
+  .dashboard-redesign
+  .dashboard-family-panel {
+    min-height: auto;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-header,
+  .dashboard-redesign
+  .dashboard-upcoming-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 620px) {
+
+  .dashboard-redesign {
+    padding-bottom: 90px;
+  }
+
+
+  /* HERO */
+
+  .dashboard-redesign
+  .dashboard-hero {
+    margin-bottom: 25px;
+
+    padding:
+      23px
+      18px;
+
+    border-radius: 20px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-hero-decoration {
+    top: -130px;
+    right: -115px;
+
+    width: 300px;
+    height: 300px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-date {
+    margin-bottom: 8px;
+
+    font-size: 9px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-title {
+    max-width: 100%;
+
+    font-size: 35px;
+
+    line-height: 1.06;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-subtitle {
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+  }
+
+
+  .dashboard-redesign
+  .quick-add-button {
+    width: 100%;
+    min-height: 49px;
+
+    font-size: 12px;
+  }
+
+
+  /* PULSE */
+
+  .dashboard-redesign
+  .dashboard-pulse-header {
+    margin-bottom: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-section-eyebrow {
+    font-size: 9px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-pulse-header h2 {
+    font-size: 20px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-pulse-header > p {
+    font-size: 11px;
+  }
+
+
+  /* SUMMARY GRID */
+
+  .dashboard-redesign
+  .dashboard-summary-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 8px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-stat-card {
+    grid-template-columns:
+      1fr;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    min-height: 174px;
+
+    padding: 15px;
+
+    border-radius: 16px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-stat-arrow {
+    display: none;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-icon {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-label {
+    font-size: 10px;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-value {
+    font-size: 28px;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-detail {
+    font-size: 9px;
+
+    white-space: normal;
+  }
+
+
+  /* WORKSPACE */
+
+  .dashboard-redesign
+  .dashboard-workspace-grid {
+    gap: 12px;
+
+    margin-top: 15px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-side-stack {
+    gap: 12px;
+  }
+
+
+  /* TODAY */
+
+  .dashboard-redesign
+  .dashboard-focus-panel {
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-header {
+    gap: 14px;
+
+    margin-bottom: 17px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-heading {
+    gap: 12px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-heading h2,
+  .dashboard-redesign
+  .dashboard-panel-header h2,
+  .dashboard-redesign
+  .dashboard-tomorrow-top h2,
+  .dashboard-redesign
+  .dashboard-upcoming-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-heading p {
+    font-size: 11px;
+  }
+
+
+  .dashboard-redesign
+  .panel-link-button {
+    min-height: 38px;
+
+    padding:
+      0
+      8px;
+
+    font-size: 10px;
+  }
+
+
+  /* TASKS */
+
+  .dashboard-redesign
+  .dashboard-task-card {
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-task-card:hover {
+    transform: none;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-task-card
+  .child-task-complete-button {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 10px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-task-card
+  .child-task-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-task-card
+  .child-task-title-row h3 {
+    font-size: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-task-card
+  .child-task-category {
+    min-height: 23px;
+
+    font-size: 7px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-task-card
+  .child-task-meta span {
+    min-height: 25px;
+
+    font-size: 8px;
+  }
+
+
+  /* TOMORROW */
+
+  .dashboard-redesign
+  .dashboard-tomorrow-feature {
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-tomorrow-icon {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 13px;
+  }
+
+
+  .dashboard-redesign
+  .tomorrow-panel-description {
+    font-size: 11px;
+  }
+
+
+  .dashboard-redesign
+  .tomorrow-panel-button {
+    min-height: 47px;
+
+    font-size: 11px;
+  }
+
+
+  /* FAMILY */
+
+  .dashboard-redesign
+  .dashboard-family-panel {
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-child-preview {
+    padding: 11px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-child-avatar {
+    width: 41px;
+    height: 41px;
+
+    font-size: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-child-details strong {
+    font-size: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-child-details small {
+    font-size: 9px;
+  }
+
+
+  /* UPCOMING */
+
+  .dashboard-redesign
+  .dashboard-upcoming-feature {
+    margin-top: 12px;
+
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-upcoming-heading {
+    gap: 12px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-upcoming-date {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-upcoming-date strong {
+    font-size: 19px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-upcoming-heading p {
+    font-size: 10px;
+  }
+
+
+  /* EMPTY STATES */
+
+  .dashboard-redesign
+  .dashboard-empty-state {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 12px;
+
+    min-height: 0;
+
+    padding: 14px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-empty-state
+  .empty-state-action {
+    grid-column:
+      1 / -1;
+
+    width: 100%;
+  }
+
+
+  .dashboard-redesign
+  .empty-state-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-empty-state
+  > div
+  > strong {
+    font-size: 13px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-empty-state p {
+    font-size: 10px;
+  }
+
+
+  .dashboard-redesign
+  .upcoming-empty-state {
+    padding: 14px;
+  }
+
+
+  .dashboard-redesign
+  .upcoming-empty-state
+  > div
+  > strong {
+    font-size: 13px;
+  }
+
+
+  .dashboard-redesign
+  .upcoming-empty-state p {
+    font-size: 10px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .dashboard-redesign
+  .dashboard-hero {
+    padding:
+      20px
+      15px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-title {
+    font-size: 31px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-summary-grid {
+    gap: 7px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-stat-card {
+    min-height: 164px;
+
+    padding: 13px;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  .dashboard-redesign
+  .summary-card-value {
+    font-size: 26px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-panel,
+  .dashboard-redesign
+  .dashboard-tomorrow-feature,
+  .dashboard-redesign
+  .dashboard-family-panel,
+  .dashboard-redesign
+  .dashboard-upcoming-feature {
+    padding: 15px;
+  }
+
+
+  .dashboard-redesign
+  .dashboard-focus-heading h2,
+  .dashboard-redesign
+  .dashboard-panel-header h2,
+  .dashboard-redesign
+  .dashboard-tomorrow-top h2,
+  .dashboard-redesign
+  .dashboard-upcoming-heading h2 {
+    font-size: 17px;
+  }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+@media (hover: none) {
+
+  .dashboard-redesign
+  .quick-add-button:hover,
+
+  .dashboard-redesign
+  .dashboard-stat-card:hover,
+
+  .dashboard-redesign
+  .panel-link-button:hover,
+
+  .dashboard-redesign
+  .dashboard-task-card:hover,
+
+  .dashboard-redesign
+  .dashboard-child-preview:hover,
+
+  .dashboard-redesign
+  .dashboard-more-children-button:hover,
+
+  .dashboard-redesign
+  .empty-state-action:hover,
+
+  .dashboard-redesign
+  .tomorrow-panel-button:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ========================================
+   ACCESSIBLE FOCUS STATES
+======================================== */
+
+.dashboard-redesign
+button:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 138, 115, 0.25);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dashboard-redesign
+  .quick-add-button,
+
+  .dashboard-redesign
+  .dashboard-stat-card,
+
+  .dashboard-redesign
+  .panel-link-button,
+
+  .dashboard-redesign
+  .dashboard-task-card,
+
+  .dashboard-redesign
+  .child-task-complete-button,
+
+  .dashboard-redesign
+  .dashboard-child-preview,
+
+  .dashboard-redesign
+  .dashboard-child-arrow,
+
+  .dashboard-redesign
+  .dashboard-more-children-button,
+
+  .dashboard-redesign
+  .empty-state-action,
+
+  .dashboard-redesign
+  .tomorrow-panel-button {
+    transition: none;
+  }
+
+}
